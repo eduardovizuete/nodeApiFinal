@@ -11,4 +11,4 @@ db.once('open', function () {
 	console.log('Mongodb connected');
 });
 
-mongoose.connect('mongodb://localhost:27017/productAPI');
+mongoose.connect('mongodb://localhost:27017/productAPI', { useMongoClient: true });

@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-// define categroy schema
+// define category schema
 var categorySchema = mongoose.Schema({
 	name: String
 });

@@ -16,7 +16,8 @@ require('./lib/mongoConnection');
 // test model save category
 require('./lib/categorySave');
 
-
+// test model save user
+require('./lib/userSave');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
