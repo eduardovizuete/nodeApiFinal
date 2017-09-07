@@ -2,7 +2,7 @@
 
 var savedSearchSchema = require('../models/savedSearchSchema');
 
-// save product
+// save saveSearch
 var saveSearch = new savedSearchSchema({
     user: 'username1',
 	category: 'cat1',

@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-// define user schema
+// define savedSearch schema
 var savedSearchSchema = mongoose.Schema({
     user: String,
 	category: String,

@@ -28,6 +28,9 @@ require('./lib/transactionSave');
 // test model save savedSearch
 require('./lib/savedSearchSave');
 
+// test model save image
+require('./lib/imageSave');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
