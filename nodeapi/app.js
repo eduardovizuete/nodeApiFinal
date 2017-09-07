@@ -19,6 +19,9 @@ require('./lib/categorySave');
 // test model save user
 require('./lib/userSave');
 
+// test model save product
+require('./lib/productSave');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
