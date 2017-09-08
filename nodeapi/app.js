@@ -10,27 +10,6 @@ var users = require('./routes/users');
 
 var app = express();
 
-// mongoose connection
-require('./lib/mongoConnection');
-
-// test model save category
-require('./lib/categorySave');
-
-// test model save user
-require('./lib/userSave');
-
-// test model save product
-require('./lib/productSave');
-
-// test model save transaction
-require('./lib/transactionSave');
-
-// test model save savedSearch
-require('./lib/savedSearchSave');
-
-// test model save image
-require('./lib/imageSave');
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

@@ -1,0 +1,791 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<!DOCTYPE html>
+<html lang='en' xmlns='http://www.w3.org/1999/xhtml' >
+<head>
+<title>Default Layout</title>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>-->
+<link rel="shortcut icon" href="http://www.dbschema.com/images/favicon.ico">
+<style type='text/css'>
+body {
+    font-family: 'Segoe UI', 'Lucida sans', Dialog;
+    font-size: 13px;
+    background-color:#f5f5f5;
+    margin: 10px;
+}
+</style>
+</head>
+
+<body>
+<div class='svg-container'>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' text-rendering='optimizeLegibility'   width='525' height='770' viewbox='0 0 525 770' >
+  <script type='text/ecmascript'>
+  <![CDATA[
+  function hghl(el) { for ( var i in el ){ var elem = document.getElementById(el[i]); if ( elem != null ) elem.setAttribute('class','highlight');  }  }
+  function uhghl(el) { for ( var i in el ){ var elem = document.getElementById(el[i]); if ( elem != null ) elem.setAttribute('class','scene'); }  } 
+  ]]>
+  </script> 
+
+<style type='text/css'>
+  text                { fill:#000000; font-family: Tahoma, 'Trebuchet MS', Dialog; font-size:11px; }
+  a text:hover        { fill:#94025f; text-shadow: 0px 0px 6px #d0ce00; }
+  text.highlight      { fill:#94025f; text-shadow: 0px 0px 4px #eac533; }
+  text.colType        { fill:#b3b3b3; }
+  text.relName        { fill:#b09c7c; }
+  path                { stroke:#5c554f; stroke-width:1.15; fill:none; }
+  path.virtual        { stroke:#b7642d; }
+  path.dotted         { stroke-dasharray:4,2; }
+  path.scene          { stroke-width:10; opacity:0;}
+  path.highlight      { stroke-width:5; stroke:#eac533; opacity:0.6;}
+  rect.entity         { fill:#ffffff; stroke:#aaa; stroke-width:1;shape-rendering:crispEdges;filter:url(#shadow); }
+  line.delim          { stroke-width:1; shape-rendering:crispEdges; }
+  text.callout        { fill:#000000; font-family: Tahoma, 'Trebuchet MS', Dialog; font-size:11px; }
+  rect.callout        { fill:url(#calloutGradient); stroke:#bebdbd; stroke-width:0.5; filter: url(#shadow);}
+  rect.grp            { stroke:#b1b1b1; stroke-width:1.7; opacity:0.8; }
+</style>
+<defs>
+  <pattern id='layoutBgA' patternUnits='userSpaceOnUse'  width='10' height='20' x='0' y='0' viewBox='0 0 5 10'>  
+     <line x1='-2' y1='1' x2='7' y2='10' stroke='#f3f3f3' stroke-width='.5'/>  
+     <line x1='-2' y1='6' x2='7' y2='15' stroke='#f3f3f3' stroke-width='.5'/>  
+     <line x1='-2' y1='-4' x2='7' y2='5' stroke='#f3f3f3' stroke-width='.5'/>  
+  </pattern>  
+  <radialGradient id='layoutBgB' gradientUnits='userSpaceOnUse' cx='50%' cy='50%' r='75%' fx='46%' fy='22%'>
+     <stop offset='0%' stop-opacity='.2' stop-color='#f5f5f5' />  
+     <stop offset='100%' stop-color='#efefef' />  
+  </radialGradient>
+  <pattern id='layoutBgTr' patternUnits='userSpaceOnUse'  width='300' height='300' x='0' y='0' viewBox='0 0 300 300'>  
+    <text x='-55' y='200' transform='rotate(-45)' style='font-family:Arial;font-size:48px;font-weight:bold;fill:#e7e7e7;'>&#84;&#82;&#73;&#65;&#76;</text> 
+    <text x='-130' y='230' transform='rotate(-45)' style='font-family:Arial;font-size:24px;font-weight:bold;fill:#e7e7e7;'>&#77;ove &#116;he m&#111;use &#111;ver &#116;ables</text> 
+    <text x='-85' y='250' transform='rotate(-45)' style='font-family:Arial;font-size:24px;font-weight:bold;fill:#e7e7e7;'>&#116;o re&#97;d &#116;he c&#111;mmen&#116;s</text> 
+  </pattern>  
+  <linearGradient id='groupUnderTitleLine' x1='0%' y1='0%' x2='100%' y2='0%' >
+          <stop offset='0%' stop-color='#999999' stop-opacity='0.7'/> 
+          <stop offset='100%' stop-color='#999999' stop-opacity='0' /> 
+   </linearGradient>
+  <radialGradient id='calloutGradient' cx='25%' cy='20%' r='80%' fx='10%' fy='10%'>
+	   <stop offset='0%' stop-color='#ffffff' />
+    <stop offset='100%' stop-color='#f8f6d1' />
+  </radialGradient>
+  <filter id='shadow' width='120%' height='120%'> 
+      <feOffset result='offOut' in='SourceGraphic' dx='1' dy='1' /> 
+      <feColorMatrix result='matrixOut' in='offOut' type='matrix' 
+      values='0.1 0 0 0 0 0 0.1 0 0 0 0 0 0.1 0 0 0 0 0 0.3 0' /> 
+      <feGaussianBlur result='blurOut' in='matrixOut' stdDeviation='3' /> 
+      <feBlend in='SourceGraphic' in2='blurOut' mode='normal' /> 
+    </filter> 
+  <filter id='fkShadow' height='130%'> 
+    <feGaussianBlur in='SourceAlpha' stdDeviation='1.5'/> <!-- stdDeviation is how much to blur -->
+    <feOffset dx='1.2' dy='1.2' result='offsetblur'/> <!-- how much to offset -->
+    <feMerge>
+    <feMergeNode/> <!-- this contains the offset blurred image -->
+    <feMergeNode in='SourceGraphic'/> <!-- this contains the element that the filter is applied to -->
+    </feMerge>
+  </filter>
+  <radialGradient id='legendGradient' fx='5%' fy='5%' r='75%' spreadMethod='pad'>
+          <stop offset='0%' stop-color='#eefbf2' stop-opacity='1'/> 
+          <stop offset='100%' stop-color='#cff9cb' stop-opacity='1' /> 
+   </radialGradient>
+  <symbol id='calloutArrowDown' overflow='visible' >
+      <path d='M 0,0 L 7,11 L 15,0 z' style='fill:#f8f6d1;stroke:none; filter: url(#shadow);' />
+      <path d='M 0,0 L 7,11 L 15,0' style='stroke:#bebdbd; stroke-width:0.5;' />
+  </symbol>
+  <symbol id='calloutArrowUp' overflow='visible' >
+      <path d='M 0,15 L 7,3 L 15,15 z' style='fill:#ffffff; stroke:none; filter: url(#shadow);' />
+      <path d='M 0,15 L 7,3 L 15,15' style='stroke:#bebdbd; stroke-width:0.5;' />
+  </symbol>
+  <symbol id='pk' overflow='visible' >
+    <g transform='scale(0.99)'>
+     <path style='fill:#fffa7d;stroke:#765f03;stroke-width:0.6;stroke-linecap:round;stroke-linejoin:round;'
+        d='M 9.3678877,3.5695485 C 9.1030218,3.2729386 9.0796382,2.7628519 9.3396185,2.4517097 9.5449651,2.1956495 9.9040386,2.0980533 10.199638,2.2169415 10.533525,2.3415459 10.775153,2.706942 10.750675,3.0842709 10.737029,3.3980003 10.541153,3.699122 10.258248,3.8066067 9.966649,3.9250429 9.6169668,3.8418805 9.4008073,3.6062324 9.3894892,3.5943518 9.3785264,3.582104 9.3678886,3.5695487 z M 11.226617,6.9916004 C 11.888137,6.3548946 12.293488,5.4172188 12.311087,4.442353 12.378144,2.7379364 11.248678,1.0541269 9.7322318,0.44767357 8.3887112,-0.1280313 6.7865012,0.26822889 5.8918395,1.4007929 5.080823,2.3839145 4.9336815,3.8452096 5.3635544,5.101615 L 4.3670905,5.315913 C 4.0664984,5.3682645 4.0967703,5.6316724 4.2574957,5.8208829 L 4.9124,6.5655244 4.1543436,7.2512357 3.2136002,7.2163506 3.1674775,8.5586827 2.0406832,8.5086512 1.5965306,8.9299953 1.5471661,10.179833 0.75616674,10.195223 0.2112857,10.758575 0.15354288,11.735988 0.07199052,12.765553 c 0.36440953,0.238225 0.79006967,0.195492 1.44938278,-0.02675 L 6.3033562,8.1282037 6.8217102,8.6765688 C 6.9985465,8.8799427 7.3003699,8.7497574 7.358381,8.5016252 L 7.4938877,7.5084164 c 0.8537488,0.3985387 1.8303125,0.4711541 2.6851793,0.1427713 0.393927,-0.1407258 0.746858,-0.3701772 1.04755,-0.6595873 z'/>
+     <path d='M 6.8014948,6.3102123 0.15369063,13.024481 0.21560535,12.141962 6.0062342,6.2683782 z'
+        style='fill:#ffe5a5;fill-opacity:1;stroke:#854e31;stroke-width:0.06912433;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:3.00300009'/>
+    </g>
+  </symbol>
+  <symbol id='dist' overflow='visible' >
+    <g transform='scale(0.99)'>
+      <path style='fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;' d='M 0.177,11.431 12.28,11.449'/>
+      <path style='fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;' d='m 6.124,3.954 0.066,7.154 v 0'/>
+      <rect width='11.78' height='3.40' x='0.40' y='0.44' style='fill:#fffa7d;stroke:#765f03;stroke-width:0.6;' ry='0.83'/>
+      <rect width='11.78' height='3.40' x='0.40' y='5.609' style='fill:#fffa7d;stroke:#765f03;stroke-width:0.6;' ry='0.832'/>
+    </g>
+  </symbol>
+  <symbol id='unq' overflow='visible' >
+    <g transform='scale(0.99)'>
+      <rect style='fill:#fbea8e;stroke:#7e4d31;stroke-width:0.71934468;stroke-linecap:round;stroke-linejoin:round;'
+         width='2.29' height='8.43' x='7.48' y='-0.76' ry='1.14' transform='matrix(0.701,0.713,-0.727,0.685,0,0)' />
+      <path style='fill:white;stroke:#858585;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;'
+         d='m 26.04,8.64 a 4.13,4.13 0 1 1 -8.26,0 4.13,4.13 0 1 1 8.26,0 z'
+         transform='matrix(1.025,0,0,0.987,-14.690,-3.862)' />
+      <text x='5.8' y='7.4' style='font-size:7px;fill:#8a8a8a;'>1</text>
+    </g>
+  </symbol>
+  <symbol id='idx' overflow='visible' >
+    <g transform='scale(0.99)'>
+      <rect style='fill:#fbea8e;stroke:#7e4d31;stroke-width:0.71934468;stroke-linecap:round;stroke-linejoin:round;'
+         width='2.29' height='8.43' x='7.48' y='-0.76' ry='1.14' transform='matrix(0.701,0.713,-0.727,0.685,0,0)' />
+      <path style='fill:white;stroke:#858585;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;'
+         d='m 26.04,8.64 a 4.13,4.13 0 1 1 -8.26,0 4.13,4.13 0 1 1 8.26,0 z'
+         transform='matrix(1.025,0,0,0.987,-14.690,-3.862)' />
+    </g>
+  </symbol>
+  <symbol id='fk' overflow='visible' >
+    <g transform='scale(0.87)'>
+      <path style='fill:#f3e1b7;stroke:#7e471f;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+      d='M 12.48,0.33 7.07,0.89 9.067,2.974 0.329,11.731 1.073,12.597 9.811,3.841 11.77,5.78 z' />
+    </g>
+  </symbol>
+  <symbol id='ref' overflow='visible' >
+    <g transform='scale(0.87)'>
+      <path style='fill:#f3e1b7;stroke:#7e471f;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0.10,12.70 5.31,12.15 3.40,10.06 11.82,1.32 11.11,0.45 2.68,9.19 0.80,7.24 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag0' overflow='visible' >
+    <g transform='scale(0.92)'>
+      <path style='fill:#b7d0f6;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag1' overflow='visible' >
+    <g transform='scale(0.92)'>
+      <path style='fill:#f4a393;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag2' overflow='visible' >
+    <g transform='scale(0.92)'>
+      <path style='fill:#77ec8b;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='nn' overflow='visible' >
+  <path style='stroke:#9b3e50;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0,0 3,3 M 0,3 3,0 z'/>
+  </symbol>
+  <symbol id='view' overflow='visible' >
+    <g transform='scale(0.99)'>
+     <line x1='12' y1='6' x2='19' y2='0' stroke='black' stroke-width='0.5' />
+     <line x1='0' y1='6' x2='7' y2='0' stroke='black' stroke-width='0.5' />
+     <circle cx='3' cy='6' r='3' fill='#f9ebbc' stroke='black' stroke-width='0.5'/>
+     <circle cx='10' cy='6' r='3' fill='#f9ebbc' stroke='black' stroke-width='0.5'/>
+    </g>
+  </symbol>
+  <marker id='arrow01' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 0.00,3.75 L 15.00,3.75 z' />
+  </marker>
+  <marker id='arrow1' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 0.00,3.75 L 15.00,3.75 z' />
+  </marker>
+  <marker id='foot01' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 1.50,3.75 L 3.00,3.75 L 4.50,3.75 L 6.00,3.75 z' />
+  </marker>
+  <marker id='foot0p' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 1.50,3.75 L 3.00,3.75 L 4.50,3.75 L 6.00,3.75 z' />
+    <path d='M 0.00,0.00 L 7.50,3.75 L 0.00,7.50' />
+  </marker>
+  <marker id='foot1' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 0.00,3.75 L 15.00,3.75 z' />
+  </marker>
+  <marker id='foot1p' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 0.00,3.75 L 15.00,3.75 z' />
+    <path d='M 0.00,0.00 L 7.50,3.75 L 0.00,7.50' />
+  </marker>
+  <linearGradient id='tbg_bfd4f5' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#e0e9f8' /> 
+     <stop offset='100%' stop-color='#c1d3ee' /> 
+  </linearGradient>
+  <linearGradient id='tbg_bfbff5' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#e0e0f8' /> 
+     <stop offset='100%' stop-color='#c1c1ee' /> 
+  </linearGradient>
+  <linearGradient id='tbg_d2bff5' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#e8e0f8' /> 
+     <stop offset='100%' stop-color='#d1c1ee' /> 
+  </linearGradient>
+  <linearGradient id='tbg_f5ddbf' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#f8ede0' /> 
+     <stop offset='100%' stop-color='#eedac1' /> 
+  </linearGradient>
+  <linearGradient id='tbg_c8f5bf' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#e4f8e0' /> 
+     <stop offset='100%' stop-color='#c9eec1' /> 
+  </linearGradient>
+</defs>
+
+<!-- ============= Desktop ============= -->
+<rect x='1' y='1' width='523' height='768' rx='7' ry='7' style='fill:url(#layoutBgB); stroke:#777777; stroke-width:0.5;' />
+<rect x='1' y='1' width='523' height='768' rx='7' ry='7' style='fill:url(#layoutBgTr);' />
+<rect x='1' y='1' width='523' height='768' rx='7' ry='7' style='fill:url(#layoutBgA); stroke:#777777; stroke-width:0.5;' />
+
+<!-- ============= Legend ============= -->
+<g transform='translate(10,10)'>
+  <rect x='10' y='10' width='330' height='52' rx='6' ry='6' style='fill:url(#legendGradient);filter:url(#shadow);'/> 
+  <text x='65' y='33'>Default Layout</text> 
+  <text x='65' y='49' style='fill:#aaaaaa; font-size:11px;'><tspan>Read table &amp; column comments as mouse-over tooltips.</tspan></text> 
+<g transform="scale(0.75,0.75) translate(10,7)" > <a xlink:href='http://www.dbschema.com'> <rect style="fill:#eb7f2c;stroke:none;shape-rendering:geometricPrecision;" width="13.27" height="11.26" x="40.04" y="59.44" ry="3.14" transform="matrix(0.90187511,-0.43199686,0,1,0,0)" /> <rect style="fill:#2c49eb;stroke:none;shape-rendering:geometricPrecision;" width="13.27" height="11.26" x="54.83" y="59.57" ry="3.14" transform="matrix(0.90187511,-0.43199686,0,1,0,0)" /> <rect style="fill:#2c49eb;stroke:none;shape-rendering:geometricPrecision;" width="13.27" height="11.26" x="40.35" y="71.62" ry="3.14" transform="matrix(0.90187511,-0.43199686,0,1,0,0)" /> <rect style="fill:#2c49eb;stroke:none;shape-rendering:geometricPrecision;" width="13.27" height="11.26" x="54.68" y="71.75" ry="3.14" transform="matrix(0.90187511,-0.43199686,0,1,0,0)" /> <rect style="fill:#2c49eb;stroke:none;shape-rendering:geometricPrecision;" width="13.35" height="11.20" x="13.48" y="19.67" ry="3.12" transform="matrix(0.84723158,0.53122372,0,1,0,0)" /> <rect style="fill:#eb7f2c;stroke:none;shape-rendering:geometricPrecision;" width="13.35" height="11.20" x="28.36" y="19.80" ry="3.12" transform="matrix(0.84723158,0.53122372,0,1,0,0)" /> <rect style="fill:#2c49eb;stroke:none;shape-rendering:geometricPrecision;" width="13.35" height="11.20" x="13.79" y="31.78" ry="3.12" transform="matrix(0.84723158,0.53122372,0,1,0,0)" /> <rect style="fill:#2c49eb;stroke:none;shape-rendering:geometricPrecision;" width="13.35" height="11.20" x="28.21" y="31.92" ry="3.12" transform="matrix(0.84723158,0.53122372,0,1,0,0)" /> <rect style="fill:#2c49eb;stroke:none;shape-rendering:geometricPrecision;" width="13.49" height="14.24" x="34.59" y="-9.62" ry="3.97" transform="matrix(0.85815392,0.51339249,-0.91732703,0.39813455,0,0)" /> <rect style="fill:#2c49eb;stroke:none;shape-rendering:geometricPrecision;" width="13.49" height="14.24" x="49.63" y="-9.46" ry="3.97" transform="matrix(0.85815392,0.51339249,-0.91732703,0.39813455,0,0)" /> <rect style="fill:#2c49eb;stroke:none;shape-rendering:geometricPrecision;" width="13.49" height="14.24" x="34.90" y="5.77"  ry="3.97" transform="matrix(0.85815392,0.51339249,-0.91732703,0.39813455,0,0)" /> <rect style="fill:#eb7f2c;stroke:none;shape-rendering:geometricPrecision;" width="13.49" height="14.24" x="49.47" y="5.93"  ry="3.97" transform="matrix(0.85815392,0.51339249,-0.91732703,0.39813455,0,0)" /> <title>Generated using DbSchema - www.dbschema.com</title> </a></g>
+</g>
+
+<g transform='translate(0,110)'>
+<!-- ============= Group 'categories' ============= -->
+<rect class='grp' style='fill:#ecf0f7;stroke:#ced5e0' x='389' y='40' width='107' height='140' />
+<text x='400' y='55'>categories</text>
+<rect style='fill:url(#groupUnderTitleLine); stroke-width:2;' x='400' y='58' width='85' height='2' />
+
+<!-- ============= Group 'images' ============= -->
+<rect class='grp' style='fill:#eef7ec;stroke:#d2e0ce' x='389' y='385' width='107' height='155' />
+<text x='400' y='400'>images</text>
+<rect style='fill:url(#groupUnderTitleLine); stroke-width:2;' x='400' y='403' width='85' height='2' />
+
+<!-- ============= Group 'products' ============= -->
+<rect class='grp' style='fill:#f7f3ec;stroke:#e0dace' x='194' y='370' width='137' height='230' />
+<text x='205' y='385'>products</text>
+<rect style='fill:url(#groupUnderTitleLine); stroke-width:2;' x='205' y='388' width='115' height='2' />
+
+<!-- ============= Group 'savedsearches' ============= -->
+<rect class='grp' style='fill:#ececf7;stroke:#cecee0' x='194' y='70' width='122' height='170' />
+<text x='205' y='85'>savedsearches</text>
+<rect style='fill:url(#groupUnderTitleLine); stroke-width:2;' x='205' y='88' width='100' height='2' />
+
+<!-- ============= Group 'transactions' ============= -->
+<rect class='grp' style='fill:#f0ecf7;stroke:#d5cee0' x='44' y='400' width='107' height='185' />
+<text x='55' y='415'>transactions</text>
+<rect style='fill:url(#groupUnderTitleLine); stroke-width:2;' x='55' y='418' width='85' height='2' />
+
+<!-- ============= Group 'users' ============= -->
+<rect class='grp' style='fill:#ecf0f7;stroke:#ced5e0' x='29' y='70' width='122' height='230' />
+<text x='40' y='85'>users</text>
+<rect style='fill:url(#groupUnderTitleLine); stroke-width:2;' x='40' y='88' width='100' height='2' />
+
+<!-- ============= Fk 'savedsearches_fk_savedsearches' ============= -->
+<path id='savedsearches_fk_savedsearches'  onmouseover="hghl(['savedsearches_fk_savedsearches','productAPI.savedsearches.user','productAPI.users._id'])" onmouseout="uhghl(['savedsearches_fk_savedsearches','productAPI.savedsearches.user','productAPI.users._id'])" transform='translate(7,0)' class='scene' d='M 195 120 L 135,120' >
+	<title>Fk fk_savedsearches
+savedsearches ref users ( user -&gt; _id )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'  class='virtual'  d='M 195 120 L 135,120' ></path>
+<text x='181' y='115' transform='rotate(0 181,115)' title='Fk fk_savedsearches
+savedsearches ref users ( user -&gt; _id )' class='relName' style='fill:#7474a7'>user</text>
+<!-- ============= Fk 'savedsearches_fk_savedsearches_0' ============= -->
+<path id='savedsearches_fk_savedsearches_0'  onmouseover="hghl(['savedsearches_fk_savedsearches_0','productAPI.savedsearches.category','productAPI.categories._id'])" onmouseout="uhghl(['savedsearches_fk_savedsearches_0','productAPI.savedsearches.category','productAPI.categories._id'])" transform='translate(7,0)' class='scene' d='M 300 120 L 390,120' >
+	<title>Fk fk_savedsearches_0
+savedsearches ref categories ( category -&gt; _id )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'  class='virtual'  d='M 300 120 L 390,120' ></path>
+<text x='307' y='115' transform='rotate(0 307,115)' title='Fk fk_savedsearches_0
+savedsearches ref categories ( category -&gt; _id )' class='relName' style='fill:#7474a7'>category</text>
+<!-- ============= Fk 'transactions_fk_transactions' ============= -->
+<path id='transactions_fk_transactions'  onmouseover="hghl(['transactions_fk_transactions','productAPI.transactions.product','productAPI.products._id'])" onmouseout="uhghl(['transactions_fk_transactions','productAPI.transactions.product','productAPI.products._id'])" transform='translate(7,0)' class='scene' d='M 135 450 L 195,450' >
+	<title>Fk fk_transactions
+transactions ref products ( product -&gt; _id )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'  class='virtual'  d='M 135 450 L 195,450' ></path>
+<text x='142' y='445' transform='rotate(0 142,445)' title='Fk fk_transactions
+transactions ref products ( product -&gt; _id )' class='relName' style='fill:#8774a7'>product</text>
+<!-- ============= Fk 'transactions_fk_transactions_0' ============= -->
+<path id='transactions_fk_transactions_0'  onmouseover="hghl(['transactions_fk_transactions_0','productAPI.transactions.seller','productAPI.users._id'])" onmouseout="uhghl(['transactions_fk_transactions_0','productAPI.transactions.seller','productAPI.users._id'])" transform='translate(7,0)' class='scene' d='M 75 420 L 75,285' >
+	<title>Fk fk_transactions_0
+transactions ref users ( seller -&gt; _id )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'  class='virtual'  d='M 75 420 L 75,285' ></path>
+<text x='77' y='415' transform='rotate(270 77,415)' title='Fk fk_transactions_0
+transactions ref users ( seller -&gt; _id )' class='relName' style='fill:#8774a7'>seller</text>
+<!-- ============= Fk 'transactions_fk_transactions_1' ============= -->
+<path id='transactions_fk_transactions_1'  onmouseover="hghl(['transactions_fk_transactions_1','productAPI.transactions.buyer','productAPI.users._id'])" onmouseout="uhghl(['transactions_fk_transactions_1','productAPI.transactions.buyer','productAPI.users._id'])" transform='translate(7,0)' class='scene' d='M 90 420 L 90,285' >
+	<title>Fk fk_transactions_1
+transactions ref users ( buyer -&gt; _id )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'  class='virtual'  d='M 90 420 L 90,285' ></path>
+<text x='92' y='415' transform='rotate(270 92,415)' title='Fk fk_transactions_1
+transactions ref users ( buyer -&gt; _id )' class='relName' style='fill:#8774a7'>buyer</text>
+<!-- ============= Fk 'images_fk_images' ============= -->
+<path id='images_fk_images'  onmouseover="hghl(['images_fk_images','productAPI.images.product','productAPI.products._id'])" onmouseout="uhghl(['images_fk_images','productAPI.images.product','productAPI.products._id'])" transform='translate(7,0)' class='scene' d='M 390 420 L 315,420' >
+	<title>Fk fk_images
+images ref products ( product -&gt; _id )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'  class='virtual'  d='M 390 420 L 315,420' ></path>
+<text x='360' y='415' transform='rotate(0 360,415)' title='Fk fk_images
+images ref products ( product -&gt; _id )' class='relName' style='fill:#7da774'>product</text>
+<!-- ============= Table 'users' ============= -->
+<rect class='entity' x='45' y='98' width='90' height='180' rx='7' ry='7' style='stroke:none'/>
+<path d='M 45.00 124.00 L 45.00 105.00 Q 45.00 98.00 52.00 98.00 L 128.00 98.00 Q 135.00 98.00 135.00 105.00 L 135.00 124.00 L45.00 124.00 ' style='fill:url(#tbg_bfd4f5);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='45' y='98' width='90' height='180' rx='7' ry='7' style='fill:none;stroke:#aeb5bf'/>
+<line class='delim' x1='45.000000' y1='124.000000' x2='135.000000' y2='124.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='60.000000' y1='124.000000' x2='60.000000' y2='278.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='124.000000' y1='124.000000' x2='124.000000' y2='278.000000' style='stroke:#aeb5bf'/>
+<a xlink:href='#users'><text x='74' y='116'>users</text><title>Collection productAPI.users</title></a>
+  <use id='nn' x='47' y='132' xlink:href='#nn'/><a xlink:href='#users._id'><use id='pk' x='47' y='131' xlink:href='#pk'/><title>Pk _id_ ( _id ) </title></a>
+<a xlink:href='#users._id'><text id='productAPI.users._id' x='63' y='141' onmouseover="hghl(['savedsearches_fk_savedsearches','productAPI.savedsearches.user','transactions_fk_transactions_0','productAPI.transactions.seller','transactions_fk_transactions_1','productAPI.transactions.buyer'])" onmouseout="uhghl(['savedsearches_fk_savedsearches','productAPI.savedsearches.user','transactions_fk_transactions_0','productAPI.transactions.seller','transactions_fk_transactions_1','productAPI.transactions.buyer'])">_id</text><title>_id
+* oid</title></a>
+<a xlink:href='#users._id'><use id='ref' x='124' y='131' xlink:href='#ref'/><title>Referred by savedsearches ( user -&gt; _id ) 
+Referred by transactions ( seller -&gt; _id ) 
+Referred by transactions ( buyer -&gt; _id ) </title></a>
+  <use id='nn' x='47' y='147' xlink:href='#nn'/><a xlink:href='#users.first_name'><text id='productAPI.users.first_name' x='63' y='156'>first_name</text><title>first_name
+* string</title></a>
+<text x='132' y='153' text-anchor='end' class='colType'>t</text>  <use id='nn' x='47' y='162' xlink:href='#nn'/><a xlink:href='#users.last_name'><text id='productAPI.users.last_name' x='63' y='171'>last_name</text><title>last_name
+* string</title></a>
+<text x='132' y='168' text-anchor='end' class='colType'>t</text>  <use id='nn' x='47' y='177' xlink:href='#nn'/><a xlink:href='#users.username'><text id='productAPI.users.username' x='63' y='186'>username</text><title>username
+* string</title></a>
+<text x='132' y='183' text-anchor='end' class='colType'>t</text>  <use id='nn' x='47' y='192' xlink:href='#nn'/><a xlink:href='#users.password'><text id='productAPI.users.password' x='63' y='201'>password</text><title>password
+* string</title></a>
+<text x='132' y='198' text-anchor='end' class='colType'>t</text>  <use id='nn' x='47' y='207' xlink:href='#nn'/><a xlink:href='#users.email'><text id='productAPI.users.email' x='63' y='216'>email</text><title>email
+* string</title></a>
+<text x='132' y='213' text-anchor='end' class='colType'>t</text>  <use id='nn' x='47' y='222' xlink:href='#nn'/><a xlink:href='#users.latitude'><text id='productAPI.users.latitude' x='63' y='231'>latitude</text><title>latitude
+* string</title></a>
+<text x='132' y='228' text-anchor='end' class='colType'>t</text>  <use id='nn' x='47' y='237' xlink:href='#nn'/><a xlink:href='#users.longitude'><text id='productAPI.users.longitude' x='63' y='246'>longitude</text><title>longitude
+* string</title></a>
+<text x='132' y='243' text-anchor='end' class='colType'>t</text>  <use id='nn' x='47' y='252' xlink:href='#nn'/><a xlink:href='#users.__v'><text id='productAPI.users.__v' x='63' y='261'>__v</text><title>__v
+* integer</title></a>
+<text x='132' y='258' text-anchor='end' class='colType'>#</text>
+<!-- ============= Table 'savedsearches' ============= -->
+<rect class='entity' x='210' y='98' width='90' height='120' rx='7' ry='7' style='stroke:none'/>
+<path d='M 210.00 124.00 L 210.00 105.00 Q 210.00 98.00 217.00 98.00 L 293.00 98.00 Q 300.00 98.00 300.00 105.00 L 300.00 124.00 L210.00 124.00 ' style='fill:url(#tbg_bfbff5);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='210' y='98' width='90' height='120' rx='7' ry='7' style='fill:none;stroke:#aeaebf'/>
+<line class='delim' x1='210.000000' y1='124.000000' x2='300.000000' y2='124.000000' style='stroke:#aeaebf'/>
+<line class='delim' x1='225.000000' y1='124.000000' x2='225.000000' y2='218.000000' style='stroke:#aeaebf'/>
+<line class='delim' x1='289.000000' y1='124.000000' x2='289.000000' y2='218.000000' style='stroke:#aeaebf'/>
+<a xlink:href='#savedsearches'><text x='216' y='116'>savedsearches</text><title>Collection productAPI.savedsearches</title></a>
+  <use id='nn' x='212' y='132' xlink:href='#nn'/><a xlink:href='#savedsearches._id'><use id='pk' x='212' y='131' xlink:href='#pk'/><title>Pk _id_ ( _id ) </title></a>
+<a xlink:href='#savedsearches._id'><text id='productAPI.savedsearches._id' x='228' y='141'>_id</text><title>_id
+* oid</title></a>
+  <use id='nn' x='212' y='147' xlink:href='#nn'/><a xlink:href='#savedsearches.user'><text id='productAPI.savedsearches.user' x='228' y='156' onmouseover="hghl(['savedsearches_fk_savedsearches','productAPI.users._id'])" onmouseout="uhghl(['savedsearches_fk_savedsearches','productAPI.users._id'])">user</text><title>user
+* string</title></a>
+<a xlink:href='#savedsearches.user'><use id='fk' x='289' y='146' xlink:href='#fk'/><title>References users ( user -&gt; _id ) </title></a>
+  <use id='nn' x='212' y='162' xlink:href='#nn'/><a xlink:href='#savedsearches.category'><text id='productAPI.savedsearches.category' x='228' y='171' onmouseover="hghl(['savedsearches_fk_savedsearches_0','productAPI.categories._id'])" onmouseout="uhghl(['savedsearches_fk_savedsearches_0','productAPI.categories._id'])">category</text><title>category
+* string</title></a>
+<a xlink:href='#savedsearches.category'><use id='fk' x='289' y='161' xlink:href='#fk'/><title>References categories ( category -&gt; _id ) </title></a>
+  <use id='nn' x='212' y='177' xlink:href='#nn'/><a xlink:href='#savedsearches.keywords'><text id='productAPI.savedsearches.keywords' x='228' y='186'>keywords</text><title>keywords
+* string</title></a>
+<text x='297' y='183' text-anchor='end' class='colType'>t</text>  <use id='nn' x='212' y='192' xlink:href='#nn'/><a xlink:href='#savedsearches.__v'><text id='productAPI.savedsearches.__v' x='228' y='201'>__v</text><title>__v
+* integer</title></a>
+<text x='297' y='198' text-anchor='end' class='colType'>#</text>
+<!-- ============= Table 'transactions' ============= -->
+<rect class='entity' x='60' y='428' width='75' height='135' rx='7' ry='7' style='stroke:none'/>
+<path d='M 60.00 454.00 L 60.00 435.00 Q 60.00 428.00 67.00 428.00 L 128.00 428.00 Q 135.00 428.00 135.00 435.00 L 135.00 454.00 L60.00 454.00 ' style='fill:url(#tbg_d2bff5);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='60' y='428' width='75' height='135' rx='7' ry='7' style='fill:none;stroke:#b4aebf'/>
+<line class='delim' x1='60.000000' y1='454.000000' x2='135.000000' y2='454.000000' style='stroke:#b4aebf'/>
+<line class='delim' x1='75.000000' y1='454.000000' x2='75.000000' y2='563.000000' style='stroke:#b4aebf'/>
+<line class='delim' x1='124.000000' y1='454.000000' x2='124.000000' y2='563.000000' style='stroke:#b4aebf'/>
+<a xlink:href='#transactions'><text x='65' y='446'>transactions</text><title>Collection productAPI.transactions</title></a>
+  <use id='nn' x='62' y='462' xlink:href='#nn'/><a xlink:href='#transactions._id'><use id='pk' x='62' y='461' xlink:href='#pk'/><title>Pk _id_ ( _id ) </title></a>
+<a xlink:href='#transactions._id'><text id='productAPI.transactions._id' x='78' y='471'>_id</text><title>_id
+* oid</title></a>
+  <use id='nn' x='62' y='477' xlink:href='#nn'/><a xlink:href='#transactions.product'><text id='productAPI.transactions.product' x='78' y='486' onmouseover="hghl(['transactions_fk_transactions','productAPI.products._id'])" onmouseout="uhghl(['transactions_fk_transactions','productAPI.products._id'])">product</text><title>product
+* string</title></a>
+<a xlink:href='#transactions.product'><use id='fk' x='124' y='476' xlink:href='#fk'/><title>References products ( product -&gt; _id ) </title></a>
+  <use id='nn' x='62' y='492' xlink:href='#nn'/><a xlink:href='#transactions.seller'><text id='productAPI.transactions.seller' x='78' y='501' onmouseover="hghl(['transactions_fk_transactions_0','productAPI.users._id'])" onmouseout="uhghl(['transactions_fk_transactions_0','productAPI.users._id'])">seller</text><title>seller
+* string</title></a>
+<a xlink:href='#transactions.seller'><use id='fk' x='124' y='491' xlink:href='#fk'/><title>References users ( seller -&gt; _id ) </title></a>
+  <use id='nn' x='62' y='507' xlink:href='#nn'/><a xlink:href='#transactions.buyer'><text id='productAPI.transactions.buyer' x='78' y='516' onmouseover="hghl(['transactions_fk_transactions_1','productAPI.users._id'])" onmouseout="uhghl(['transactions_fk_transactions_1','productAPI.users._id'])">buyer</text><title>buyer
+* string</title></a>
+<a xlink:href='#transactions.buyer'><use id='fk' x='124' y='506' xlink:href='#fk'/><title>References users ( buyer -&gt; _id ) </title></a>
+  <use id='nn' x='62' y='522' xlink:href='#nn'/><a xlink:href='#transactions.date'><text id='productAPI.transactions.date' x='78' y='531'>date</text><title>date
+* date</title></a>
+<text x='132' y='528' text-anchor='end' class='colType'>d</text>  <use id='nn' x='62' y='537' xlink:href='#nn'/><a xlink:href='#transactions.__v'><text id='productAPI.transactions.__v' x='78' y='546'>__v</text><title>__v
+* integer</title></a>
+<text x='132' y='543' text-anchor='end' class='colType'>#</text>
+<!-- ============= Table 'products' ============= -->
+<rect class='entity' x='210' y='398' width='105' height='180' rx='7' ry='7' style='stroke:none'/>
+<path d='M 210.00 424.00 L 210.00 405.00 Q 210.00 398.00 217.00 398.00 L 308.00 398.00 Q 315.00 398.00 315.00 405.00 L 315.00 424.00 L210.00 424.00 ' style='fill:url(#tbg_f5ddbf);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='210' y='398' width='105' height='180' rx='7' ry='7' style='fill:none;stroke:#bfb7ae'/>
+<line class='delim' x1='210.000000' y1='424.000000' x2='315.000000' y2='424.000000' style='stroke:#bfb7ae'/>
+<line class='delim' x1='225.000000' y1='424.000000' x2='225.000000' y2='578.000000' style='stroke:#bfb7ae'/>
+<line class='delim' x1='304.000000' y1='424.000000' x2='304.000000' y2='578.000000' style='stroke:#bfb7ae'/>
+<a xlink:href='#products'><text x='238' y='416'>products</text><title>Collection productAPI.products</title></a>
+  <use id='nn' x='212' y='432' xlink:href='#nn'/><a xlink:href='#products._id'><use id='pk' x='212' y='431' xlink:href='#pk'/><title>Pk _id_ ( _id ) </title></a>
+<a xlink:href='#products._id'><text id='productAPI.products._id' x='228' y='441' onmouseover="hghl(['transactions_fk_transactions','productAPI.transactions.product','images_fk_images','productAPI.images.product'])" onmouseout="uhghl(['transactions_fk_transactions','productAPI.transactions.product','images_fk_images','productAPI.images.product'])">_id</text><title>_id
+* oid</title></a>
+<a xlink:href='#products._id'><use id='ref' x='304' y='431' xlink:href='#ref'/><title>Referred by transactions ( product -&gt; _id ) 
+Referred by images ( product -&gt; _id ) </title></a>
+  <use id='nn' x='212' y='447' xlink:href='#nn'/><a xlink:href='#products.name'><text id='productAPI.products.name' x='228' y='456'>name</text><title>name
+* string</title></a>
+<text x='312' y='453' text-anchor='end' class='colType'>t</text>  <use id='nn' x='212' y='462' xlink:href='#nn'/><a xlink:href='#products.description'><text id='productAPI.products.description' x='228' y='471'>description</text><title>description
+* string</title></a>
+<text x='312' y='468' text-anchor='end' class='colType'>t</text>  <use id='nn' x='212' y='477' xlink:href='#nn'/><a xlink:href='#products.category'><text id='productAPI.products.category' x='228' y='486'>category</text><title>category
+* string</title></a>
+<text x='312' y='483' text-anchor='end' class='colType'>t</text>  <use id='nn' x='212' y='492' xlink:href='#nn'/><a xlink:href='#products.seller'><text id='productAPI.products.seller' x='228' y='501'>seller</text><title>seller
+* string</title></a>
+<text x='312' y='498' text-anchor='end' class='colType'>t</text>  <use id='nn' x='212' y='507' xlink:href='#nn'/><a xlink:href='#products.published_date'><text id='productAPI.products.published_date' x='228' y='516'>published_date</text><title>published_date
+* date</title></a>
+<text x='312' y='513' text-anchor='end' class='colType'>d</text>  <use id='nn' x='212' y='522' xlink:href='#nn'/><a xlink:href='#products.state'><text id='productAPI.products.state' x='228' y='531'>state</text><title>state
+* string</title></a>
+<text x='312' y='528' text-anchor='end' class='colType'>t</text>  <use id='nn' x='212' y='537' xlink:href='#nn'/><a xlink:href='#products.price'><text id='productAPI.products.price' x='228' y='546'>price</text><title>price
+* double</title></a>
+<text x='312' y='543' text-anchor='end' class='colType'>#</text>  <use id='nn' x='212' y='552' xlink:href='#nn'/><a xlink:href='#products.__v'><text id='productAPI.products.__v' x='228' y='561'>__v</text><title>__v
+* integer</title></a>
+<text x='312' y='558' text-anchor='end' class='colType'>#</text>
+<!-- ============= Table 'images' ============= -->
+<rect class='entity' x='405' y='413' width='75' height='105' rx='7' ry='7' style='stroke:none'/>
+<path d='M 405.00 439.00 L 405.00 420.00 Q 405.00 413.00 412.00 413.00 L 473.00 413.00 Q 480.00 413.00 480.00 420.00 L 480.00 439.00 L405.00 439.00 ' style='fill:url(#tbg_c8f5bf);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='405' y='413' width='75' height='105' rx='7' ry='7' style='fill:none;stroke:#b1bfae'/>
+<line class='delim' x1='405.000000' y1='439.000000' x2='480.000000' y2='439.000000' style='stroke:#b1bfae'/>
+<line class='delim' x1='420.000000' y1='439.000000' x2='420.000000' y2='518.000000' style='stroke:#b1bfae'/>
+<line class='delim' x1='469.000000' y1='439.000000' x2='469.000000' y2='518.000000' style='stroke:#b1bfae'/>
+<a xlink:href='#images'><text x='423' y='431'>images</text><title>Collection productAPI.images</title></a>
+  <use id='nn' x='407' y='447' xlink:href='#nn'/><a xlink:href='#images._id'><use id='pk' x='407' y='446' xlink:href='#pk'/><title>Pk _id_ ( _id ) </title></a>
+<a xlink:href='#images._id'><text id='productAPI.images._id' x='423' y='456'>_id</text><title>_id
+* oid</title></a>
+  <use id='nn' x='407' y='462' xlink:href='#nn'/><a xlink:href='#images.product'><text id='productAPI.images.product' x='423' y='471' onmouseover="hghl(['images_fk_images','productAPI.products._id'])" onmouseout="uhghl(['images_fk_images','productAPI.products._id'])">product</text><title>product
+* string</title></a>
+<a xlink:href='#images.product'><use id='fk' x='469' y='461' xlink:href='#fk'/><title>References products ( product -&gt; _id ) </title></a>
+  <use id='nn' x='407' y='477' xlink:href='#nn'/><a xlink:href='#images.azure_id'><text id='productAPI.images.azure_id' x='423' y='486'>azure_id</text><title>azure_id
+* string</title></a>
+<text x='477' y='483' text-anchor='end' class='colType'>t</text>  <use id='nn' x='407' y='492' xlink:href='#nn'/><a xlink:href='#images.__v'><text id='productAPI.images.__v' x='423' y='501'>__v</text><title>__v
+* integer</title></a>
+<text x='477' y='498' text-anchor='end' class='colType'>#</text>
+<!-- ============= Table 'categories' ============= -->
+<rect class='entity' x='405' y='68' width='75' height='90' rx='7' ry='7' style='stroke:none'/>
+<path d='M 405.00 94.00 L 405.00 75.00 Q 405.00 68.00 412.00 68.00 L 473.00 68.00 Q 480.00 68.00 480.00 75.00 L 480.00 94.00 L405.00 94.00 ' style='fill:url(#tbg_bfd4f5);stroke:1;stroke-opacity:0.1;' />
+<rect class='entity' x='405' y='68' width='75' height='90' rx='7' ry='7' style='fill:none;stroke:#aeb5bf'/>
+<line class='delim' x1='405.000000' y1='94.000000' x2='480.000000' y2='94.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='420.000000' y1='94.000000' x2='420.000000' y2='158.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='469.000000' y1='94.000000' x2='469.000000' y2='158.000000' style='stroke:#aeb5bf'/>
+<a xlink:href='#categories'><text x='414' y='86'>categories</text><title>Collection productAPI.categories</title></a>
+  <use id='nn' x='407' y='102' xlink:href='#nn'/><a xlink:href='#categories._id'><use id='pk' x='407' y='101' xlink:href='#pk'/><title>Pk _id_ ( _id ) </title></a>
+<a xlink:href='#categories._id'><text id='productAPI.categories._id' x='423' y='111' onmouseover="hghl(['savedsearches_fk_savedsearches_0','productAPI.savedsearches.category'])" onmouseout="uhghl(['savedsearches_fk_savedsearches_0','productAPI.savedsearches.category'])">_id</text><title>_id
+* oid</title></a>
+<a xlink:href='#categories._id'><use id='ref' x='469' y='101' xlink:href='#ref'/><title>Referred by savedsearches ( category -&gt; _id ) </title></a>
+  <use id='nn' x='407' y='117' xlink:href='#nn'/><a xlink:href='#categories.name'><text id='productAPI.categories.name' x='423' y='126'>name</text><title>name
+* string</title></a>
+<text x='477' y='123' text-anchor='end' class='colType'>t</text>  <use id='nn' x='407' y='132' xlink:href='#nn'/><a xlink:href='#categories.__v'><text id='productAPI.categories.__v' x='423' y='141'>__v</text><title>__v
+* integer</title></a>
+<text x='477' y='138' text-anchor='end' class='colType'>#</text>
+</g></svg></div>
+
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='categories' onclick='window.scrollTo(205, 75);return false;' style='cursor:pointer;'><h4 class='card-title'>Collection categories</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
+		<td><a name='categories._id'>&#95;id</a></td>
+		<td> oid  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='categories.name'>name</a></td>
+		<td> string   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='categories.__v'>&#95;&#95;v</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>&#95;id&#95;</td>
+		<td> ON &#95;id</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='images' onclick='window.scrollTo(205, 420);return false;' style='cursor:pointer;'><h4 class='card-title'>Collection images</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg></td>
+		<td><a name='images._id'>&#95;id</a></td>
+		<td> oid  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='images.product'>product</a></td>
+		<td> string   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='images.azure_id'>azure&#95;id</a></td>
+		<td> string   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='images.__v'>&#95;&#95;v</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>&#95;id&#95;</td>
+		<td> ON &#95;id</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Virtual Relations</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_images</td>
+		<td > ( product ) ref <a href='#products'>products</a> (&#95;id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='products' onclick='window.scrollTo(60, 405);return false;' style='cursor:pointer;'><h4 class='card-title'>Collection products</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
+		<td><a name='products._id'>&#95;id</a></td>
+		<td> oid  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='products.name'>name</a></td>
+		<td> string   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='products.description'>description</a></td>
+		<td> string   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='products.category'>category</a></td>
+		<td> string   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='products.seller'>seller</a></td>
+		<td> string   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='products.published_date'>published&#95;date</a></td>
+		<td> date   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='products.state'>state</a></td>
+		<td> string   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='products.price'>price</a></td>
+		<td> double   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='products.__v'>&#95;&#95;v</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>&#95;id&#95;</td>
+		<td> ON &#95;id</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='savedsearches' onclick='window.scrollTo(60, 105);return false;' style='cursor:pointer;'><h4 class='card-title'>Collection savedsearches</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg></td>
+		<td><a name='savedsearches._id'>&#95;id</a></td>
+		<td> oid  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='savedsearches.user'>user</a></td>
+		<td> string   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='savedsearches.category'>category</a></td>
+		<td> string   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='savedsearches.keywords'>keywords</a></td>
+		<td> string   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='savedsearches.__v'>&#95;&#95;v</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>&#95;id&#95;</td>
+		<td> ON &#95;id</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Virtual Relations</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_savedsearches</td>
+		<td > ( user ) ref <a href='#users'>users</a> (&#95;id) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_savedsearches_0</td>
+		<td > ( category ) ref <a href='#categories'>categories</a> (&#95;id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='transactions' onclick='window.scrollTo(60, 435);return false;' style='cursor:pointer;'><h4 class='card-title'>Collection transactions</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg></td>
+		<td><a name='transactions._id'>&#95;id</a></td>
+		<td> oid  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='transactions.product'>product</a></td>
+		<td> string   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='transactions.seller'>seller</a></td>
+		<td> string   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='transactions.buyer'>buyer</a></td>
+		<td> string   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='transactions.date'>date</a></td>
+		<td> date   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='transactions.__v'>&#95;&#95;v</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>&#95;id&#95;</td>
+		<td> ON &#95;id</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Virtual Relations</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_transactions</td>
+		<td > ( product ) ref <a href='#products'>products</a> (&#95;id) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_transactions_0</td>
+		<td > ( seller ) ref <a href='#users'>users</a> (&#95;id) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_transactions_1</td>
+		<td > ( buyer ) ref <a href='#users'>users</a> (&#95;id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<br/><br/>
+<div class='card'><div class='card-block'><a name='users' onclick='window.scrollTo(60, 105);return false;' style='cursor:pointer;'><h4 class='card-title'>Collection users</h4></a>
+<table class='table-sm table-bordered'>
+<thead>
+<tr><th>Indexes</th><th>Field Name</th><th>Data Type</th><th>Description</th></tr></thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
+		<td><a name='users._id'>&#95;id</a></td>
+		<td> oid  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='users.first_name'>first&#95;name</a></td>
+		<td> string   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='users.last_name'>last&#95;name</a></td>
+		<td> string   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='users.username'>username</a></td>
+		<td> string   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='users.password'>password</a></td>
+		<td> string   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='users.email'>email</a></td>
+		<td> string   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='users.latitude'>latitude</a></td>
+		<td> string   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='users.longitude'>longitude</a></td>
+		<td> string   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='users.__v'>&#95;&#95;v</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>&#95;id&#95;</td>
+		<td> ON &#95;id</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table></div></div>
+
+<p align='right'><a href='http://www.dbschema.com' style='color:#aaa'>Powered by DbSchema</a></p></body></html>
