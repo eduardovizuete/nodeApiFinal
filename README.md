@@ -1,10 +1,19 @@
 # Keepcoding API Final Project
 
-Run app
-    npm start
-Create db in mongodb and load data
-    npm installDB
+### Run
+* Run app
+```sh
+	npm start
+```
+* Create db in mongodb and load data
+```sh
+	npm installDB
+```
 
-Database model 
-    Documentation: /nodeapi/docs/db_doc/htmldoc/
-    Create with: DbSchema Free Edition
+### Database model 
+    
+[HTML Documentation](https://github.com/eduardovizuete/nodeApiFinal/blob/master/nodeapi/docs/db_doc/html_doc/dbdoc.html)
+        
+        /nodeapi/docs/db_doc/html_doc/dbdoc.html
+
+        Create with: DbSchema Free Edition
