@@ -10,6 +10,9 @@ var users = require('./routes/users');
 
 var app = express();
 
+// mongoose connection
+require('./lib/mongoConnection'); 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -24,6 +27,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+
+// middleware category
+app.use('/apiv1/category', require('./routes/apiv1/category'));
+
+// middleware user
+app.use('/apiv1/user', require('./routes/apiv1/user'));
+
+// middleware product
+app.use('/apiv1/product', require('./routes/apiv1/product'));
+
+// middleware transaction
+app.use('/apiv1/transaction', require('./routes/apiv1/transaction'));
+
+// middleware savedSearch
+app.use('/apiv1/savedSearch', require('./routes/apiv1/savedSearch'));
+
+// middleware image
+app.use('/apiv1/image', require('./routes/apiv1/image'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
