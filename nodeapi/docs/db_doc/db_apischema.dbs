@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="MongoDb" id="Project_29ff31b" template="Default" database="MongoDb" >
+	<schema name="productAPI" catalogname="productAPI" >
+		<table name="categories" generator_rows="100" >
+			<column name="_id" type="oid" length="800" decimal="0" jt="-8" mandatory="y" autoincrement="y" />
+			<column name="name" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="__v" type="integer" length="800" decimal="0" jt="4" mandatory="y" />
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+		</table>
+		<table name="images" generator_rows="150" >
+			<column name="_id" type="oid" length="800" decimal="0" jt="-8" mandatory="y" autoincrement="y" />
+			<column name="product" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="azure_id" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="__v" type="integer" length="800" decimal="0" jt="4" mandatory="y" />
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+			<fk name="fk_images" virtual="y" to_schema="productAPI" to_table="products" >
+				<fk_column name="product" pk="_id" />
+			</fk>
+		</table>
+		<table name="products" generator_rows="100" >
+			<column name="_id" type="oid" length="800" decimal="0" jt="-8" mandatory="y" autoincrement="y" />
+			<column name="name" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="description" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="category" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="seller" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="published_date" type="date" length="800" decimal="0" jt="91" mandatory="y" />
+			<column name="state" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="price" type="double" length="800" decimal="0" jt="8" mandatory="y" />
+			<column name="__v" type="integer" length="800" decimal="0" jt="4" mandatory="y" />
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+			<fk name="fk_products" virtual="y" to_schema="productAPI" to_table="categories" >
+				<fk_column name="category" pk="_id" />
+			</fk>
+		</table>
+		<table name="savedsearches" generator_rows="150" >
+			<column name="_id" type="oid" length="800" decimal="0" jt="-8" mandatory="y" autoincrement="y" />
+			<column name="user" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="category" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="keywords" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="__v" type="integer" length="800" decimal="0" jt="4" mandatory="y" />
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+			<fk name="fk_savedsearches" virtual="y" to_schema="productAPI" to_table="users" >
+				<fk_column name="user" pk="_id" />
+			</fk>
+			<fk name="fk_savedsearches_0" virtual="y" to_schema="productAPI" to_table="categories" >
+				<fk_column name="category" pk="_id" />
+			</fk>
+		</table>
+		<table name="transactions" generator_rows="150" >
+			<column name="_id" type="oid" length="800" decimal="0" jt="-8" mandatory="y" autoincrement="y" />
+			<column name="product" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="seller" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="buyer" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="date" type="date" length="800" decimal="0" jt="91" mandatory="y" />
+			<column name="__v" type="integer" length="800" decimal="0" jt="4" mandatory="y" />
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+			<fk name="fk_transactions" virtual="y" to_schema="productAPI" to_table="products" >
+				<fk_column name="product" pk="_id" />
+			</fk>
+			<fk name="fk_transactions_0" virtual="y" to_schema="productAPI" to_table="users" >
+				<fk_column name="seller" pk="_id" />
+			</fk>
+			<fk name="fk_transactions_1" virtual="y" to_schema="productAPI" to_table="users" >
+				<fk_column name="buyer" pk="_id" />
+			</fk>
+		</table>
+		<table name="users" generator_rows="100" >
+			<column name="_id" type="oid" length="800" decimal="0" jt="-8" mandatory="y" autoincrement="y" />
+			<column name="first_name" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="last_name" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="username" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="password" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="email" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="latitude" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="longitude" type="string" length="800" decimal="0" jt="12" mandatory="y" />
+			<column name="__v" type="integer" length="800" decimal="0" jt="4" mandatory="y" />
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+		</table>
+	</schema>
+	<connector name="MongoDb" database="MongoDb" driver_class="com.dbschema.MongoJdbcDriver" driver_jar="mongojdbc1.2.jar" driver_desc="No Authentication &lt;/span&gt;&lt;br&gt;&lt;b&gt;Use the Advanced tab to enter native MongoDb URI. Details in Help.&lt;br&gt;Connectivity errros are visible in Help/ Output Logs.&lt;/b&gt;" host="localhost" port="27017" instance="productAPI" />
+	<layout name="Default Layout" id="Layout_c79d6d" show_relation="columns" >
+		<comment><![CDATA[Default Layout]]></comment>
+		<entity schema="productAPI" name="users" color="bfd4f5" x="45" y="105" />
+		<entity schema="productAPI" name="savedsearches" color="bfbff5" x="210" y="105" />
+		<entity schema="productAPI" name="transactions" color="d2bff5" x="60" y="435" />
+		<entity schema="productAPI" name="images" color="c8f5bf" x="405" y="420" />
+		<entity schema="productAPI" name="categories" color="bfd4f5" x="405" y="75" />
+		<entity schema="productAPI" name="products" color="f5ddbf" x="210" y="405" />
+		<group name="categories" color="ecf0f7" >
+			<entity schema="productAPI" name="categories" />
+		</group>
+		<group name="images" color="eef7ec" >
+			<entity schema="productAPI" name="images" />
+		</group>
+		<group name="products" color="f7f3ec" >
+			<entity schema="productAPI" name="products" />
+		</group>
+		<group name="savedsearches" color="ececf7" >
+			<entity schema="productAPI" name="savedsearches" />
+		</group>
+		<group name="transactions" color="f0ecf7" >
+			<entity schema="productAPI" name="transactions" />
+		</group>
+		<group name="users" color="ecf0f7" >
+			<entity schema="productAPI" name="users" />
+		</group>
+		<script name="Sample Query Editor" id="Editor_2cf7001" language="SQL" >
+			<string><![CDATA[// PLACE THE CARET OVER EACH LINE AND PRESS EXECUTE ( F8 )
+
+productAPI.images.find()
+
+//OR
+
+USE productAPI;
+db.images.find()
+
+//OR
+
+USE productAPI;
+db.getCollection('images').find()]]></string>
+		</script>
+		<browser id="Browse_596699c" name="Editor" confirm_updates="y" >
+			<browse_table schema="productAPI" entity="categories" x="20" y="20" width="495" height="381" />
+			<browse_table schema="productAPI" entity="users" x="537" y="20" width="495" height="381" />
+			<browse_table schema="productAPI" entity="products" x="1050" y="20" width="495" height="381" />
+			<browse_table schema="productAPI" entity="transactions" x="1565" y="20" width="495" height="381" />
+			<browse_table schema="productAPI" entity="savedsearches" x="2080" y="20" width="468" height="360" />
+			<browse_table schema="productAPI" entity="images" x="2568" y="20" width="468" height="360" />
+		</browser>
+	</layout>
+	<layout name="Sample Layout with Groups" id="Layout_450943e" show_relation="columns" >
+		<entity schema="productAPI" name="images" color="bfd4f5" x="225" y="225" />
+		<entity schema="productAPI" name="products" color="c8f5bf" x="390" y="225" />
+		<entity schema="productAPI" name="users" color="f5ddbf" x="45" y="435" />
+		<callout x="225" y="75" pointer="NO" >
+			<comment><![CDATA[In DbSchema you may create multiple layouts with the same or different collections. 
+Layouts will be saved to project file. 
+Double-click any column, foreign key or table headers to edit.]]></comment>
+		</callout>
+		<group name="images" color="ecf0f7" >
+			<entity schema="productAPI" name="images" />
+		</group>
+		<group name="products" color="eef7ec" >
+			<entity schema="productAPI" name="products" />
+		</group>
+		<group name="users" color="f7f3ec" >
+			<entity schema="productAPI" name="users" />
+		</group>
+	</layout>
+	<layout name="Sample Layout with Relational Data Browse" id="Layout_1efa6db" show_relation="columns" >
+		<entity schema="productAPI" name="images" color="bfd4f5" x="225" y="165" />
+		<entity schema="productAPI" name="products" color="c8f5bf" x="390" y="165" />
+		<entity schema="productAPI" name="users" color="f5ddbf" x="45" y="375" />
+		<callout x="225" y="45" pointer="NO" >
+			<comment><![CDATA[The editor below is Relational Data Browse for exploring data from multiple collections simultaneously.
+If a field is referring data from other collection this can be marked as virtual relation (a kind of foreign key) and shown as blue line.
+Virtual relations are saved to project file and are used in Relational Data Browse for simultaneous explore of data from multiple collections.
+ 
+Each browsed collection has an arrow near the title. Press it to descend into children tables.
+Right-click record headers to set filters or ordering.]]></comment>
+		</callout>
+		<browser id="Browse_4d3f298" name="Sample Relational Data Browse" confirm_updates="y" >
+			<browse_table schema="productAPI" entity="images" x="20" y="20" width="400" height="300" />
+		</browser>
+	</layout>
+</project>

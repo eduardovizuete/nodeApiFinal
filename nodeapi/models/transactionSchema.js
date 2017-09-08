@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 // define user schema
 var transactionSchema = mongoose.Schema({
     product: String,
-	seller: String,
+    seller: String,
     buyer: String,
     date: Date
 });

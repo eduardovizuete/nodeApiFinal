@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 // define image schema
 var imageSchema = mongoose.Schema({
     product: String,
-	azure_id: String
+    azure_id: String
 });
 
 // create model

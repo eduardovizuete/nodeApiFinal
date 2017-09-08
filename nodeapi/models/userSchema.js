@@ -5,12 +5,12 @@ var mongoose = require('mongoose');
 // define user schema
 var userSchema = mongoose.Schema({
     first_name: String,
-	last_name: String,
+    last_name: String,
     username: String,
     password: String,
     email: String,
     latitude: String,
-    longitude: String    
+    longitude: String
 });
 
 // create model
