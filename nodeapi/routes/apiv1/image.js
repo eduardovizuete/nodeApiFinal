@@ -83,4 +83,52 @@ router.delete('/:image', function (req, res, next) {
     );
 });
 
+/* PUT data */
+router.put('/:id', function (req, res, next) {
+    console.log('Body: ', req.body);
+    
+    var idUpdate = req.params.id
+    console.log('Update id: ', idUpdate);
+
+    // data from post request
+    var newData = new dataSchema({
+        product: req.body.product,
+        azure_id: req.body.azureId
+    });
+
+    dataSchema.findByIdAndUpdate(
+        idUpdate, 
+        {   $set:
+            {
+                product: newData.product,
+                azure_id: newData.azure_id
+            }
+        }, 
+        function (err, dataUpdated) {
+            if (err) {
+                console.log(err);
+                next(err);
+                return;
+            } else {
+                if (dataUpdated != null) {
+                    res.json({
+                        message: "Successfully updated",
+                        id: idUpdate,
+                        newData: newData,
+                        success: true
+                    });   
+                    console.log("Successfully updated: " + idUpdate);
+                } else {
+                    res.json({
+                        message: "Data not found",
+                        id: idUpdate,
+                        success: false
+                    });
+                    console.log("Data not found: " + idUpdate);
+                }               
+            }
+        }
+    );
+});
+
 module.exports = router;

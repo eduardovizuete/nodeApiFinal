@@ -84,4 +84,54 @@ router.delete('/:savedSearch', function (req, res, next) {
     );
 });
 
+/* PUT data */
+router.put('/:id', function (req, res, next) {
+    console.log('Body: ', req.body);
+    
+    var idUpdate = req.params.id
+    console.log('Update id: ', idUpdate);
+
+    // data from post request
+    var newData = new dataSchema({
+        user: req.body.user,
+        category: req.body.category,
+        keywords: req.body.keywords
+    });
+
+    dataSchema.findByIdAndUpdate(
+        idUpdate, 
+        {   $set:
+            {
+                user: newData.user,
+                category: newData.category,
+                keywords: newData.keywords
+            }
+        }, 
+        function (err, dataUpdated) {
+            if (err) {
+                console.log(err);
+                next(err);
+                return;
+            } else {
+                if (dataUpdated != null) {
+                    res.json({
+                        message: "Successfully updated",
+                        id: idUpdate,
+                        newData: newData,
+                        success: true
+                    });   
+                    console.log("Successfully updated: " + idUpdate);
+                } else {
+                    res.json({
+                        message: "Data not found",
+                        id: idUpdate,
+                        success: false
+                    });
+                    console.log("Data not found: " + idUpdate);
+                }               
+            }
+        }
+    );
+});
+
 module.exports = router;

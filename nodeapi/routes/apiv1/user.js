@@ -88,5 +88,62 @@ router.delete('/:user', function (req, res, next) {
     );
 });
 
+/* PUT data */
+router.put('/:id', function (req, res, next) {
+    console.log('Body: ', req.body);
+    
+    var idUpdate = req.params.id
+    console.log('Update id: ', idUpdate);
+
+    // data from post request
+    var newData = new dataSchema({
+        first_name: req.body.firstName,
+        last_name: req.body.lastName,
+        username: req.body.userName,
+        password: req.body.password,
+        email: req.body.email,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude
+    });
+
+    dataSchema.findByIdAndUpdate(
+        idUpdate, 
+        {   $set:
+            {
+                first_name: newData.first_name,
+                last_name:  newData.last_name,
+                username: newData.username,
+                password: newData.password,
+                email: newData.email,
+                latitude: newData.latitude,
+                longitude: newData.longitude
+            }
+        }, 
+        function (err, dataUpdated) {
+            if (err) {
+                console.log(err);
+                next(err);
+                return;
+            } else {
+                if (dataUpdated != null) {
+                    res.json({
+                        message: "Successfully updated",
+                        id: idUpdate,
+                        newData: newData,
+                        success: true
+                    });   
+                    console.log("Successfully updated: " + idUpdate);
+                } else {
+                    res.json({
+                        message: "Data not found",
+                        id: idUpdate,
+                        success: false
+                    });
+                    console.log("Data not found: " + idUpdate);
+                }               
+            }
+        }
+    );
+});
 
 module.exports = router;
