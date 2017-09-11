@@ -27,6 +27,33 @@ router.get('/', function (req, res, next) {
     });
 });
 
+/* GET data by id */
+router.get('/:id', function (req, res, next) {
+    var id = req.params.id;    
+    console.log('Find id: ', id);
+    
+    dataSchema.findById(id, function (err, dataFind) {
+        if (err) {
+            next(err);
+            return;
+        } else {
+            if (dataFind != null) {
+                res.json({
+                    success: true,
+                    user: dataFind
+                });
+            } else {
+                res.json({
+                    message: "Data not found",
+                    id: id,
+                    success: false
+                });
+                console.log("Data not found: " + id);
+            }               
+        }       
+    });
+});
+
 /* POST data */
 router.post('/', function (req, res, next) {
     console.log('Body: ', req.body);
