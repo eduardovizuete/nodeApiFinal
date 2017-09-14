@@ -13,7 +13,7 @@ var mongoose = require('mongoose');
 // schema
 var dataSchema = mongoose.model('Transaction');
 
-/* GET transaction list */
+/* GET transaction list
 router.get('/', function (req, res, next) {
     dataSchema.find({}, function (err, transactions) {
         if (err) {
@@ -24,6 +24,54 @@ router.get('/', function (req, res, next) {
             success: true,
             transactions: transactions
         });
+    });
+});*/
+
+/* GET data list by query parameters */
+router.get('/', function (req, res, next) {
+    var queryParams = req.query;
+    console.log('Query params: ', queryParams);
+    
+    var product = req.query.product;
+    var seller = req.query.seller;
+    var buyer = req.query.buyer;
+        
+    var start = parseInt(req.query.start) || 0;
+    var limit = parseInt(req.query.limit) || 0;
+    var sort = req.query.sort || null;
+    
+    var filter = {};
+    
+    if (typeof product !== 'undefined') {
+        filter.product = product;
+    }
+    
+    if (typeof seller !== 'undefined') {
+        filter.seller = seller;
+    }
+    
+    if (typeof buyer !== 'undefined') {
+        filter.buyer = buyer;
+    }
+    
+    // call with promise
+    dataSchema.list(filter, start, limit, sort).then(function (dataFind) {
+        if (dataFind.length > 0) {
+            res.json({
+                success: true,
+                transactions: dataFind
+            }); 
+            console.log("Successfully query");
+        } else {
+            res.json({
+                success: false,
+                message: "Data not found"
+            });
+            console.log("Data not found");
+        }       
+
+    }).catch(function (err) {
+        next("Error in query");
     });
 });
 

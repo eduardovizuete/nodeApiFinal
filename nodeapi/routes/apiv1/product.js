@@ -13,7 +13,7 @@ var mongoose = require('mongoose');
 // schema
 var dataSchema = mongoose.model('Product');
 
-/* GET product list */
+/* GET product list
 router.get('/', function (req, res, next) {
     dataSchema.find({}, function (err, products) {
         if (err) {
@@ -24,6 +24,64 @@ router.get('/', function (req, res, next) {
             success: true,
             products: products
         });
+    });
+});*/
+
+/* GET data list by query parameters */
+router.get('/', function (req, res, next) {
+    var queryParams = req.query;
+    console.log('Query params: ', queryParams);
+    
+    var name = req.query.name;    
+    var description = req.query.description;
+    var category = req.query.category;
+    var seller = req.query.seller;
+    var state = req.query.state;
+    
+    var start = parseInt(req.query.start) || 0;
+    var limit = parseInt(req.query.limit) || 0;
+    var sort = req.query.sort || null;
+    
+    var filter = {};
+    
+    if (typeof name !== 'undefined') {
+        filter.name = new RegExp('^' + name, "i");
+    }
+    
+    if (typeof description !== 'undefined') {
+        filter.description = new RegExp('^' + description, "i");
+    }
+    
+    if (typeof category !== 'undefined') {
+        filter.category = category;
+    }
+    
+    if (typeof seller !== 'undefined') {
+        filter.seller = seller;
+    }
+    
+    if (typeof state !== 'undefined') {
+        filter.state = state;
+    }
+    
+    // call with promise
+    dataSchema.list(filter, start, limit, sort).then(function (dataFind) {
+        if (dataFind.length > 0) {
+            res.json({
+                success: true,
+                products: dataFind
+            }); 
+            console.log("Successfully query");
+        } else {
+            res.json({
+                success: false,
+                message: "Data not found"
+            });
+            console.log("Data not found");
+        }       
+
+    }).catch(function (err) {
+        next("Error in query");
     });
 });
 

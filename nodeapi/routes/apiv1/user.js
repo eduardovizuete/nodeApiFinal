@@ -13,7 +13,7 @@ var mongoose = require('mongoose');
 // schema
 var dataSchema = mongoose.model('User');
 
-/* GET data list */
+/* GET data list
 router.get('/', function (req, res, next) {
     dataSchema.find({}, function (err, users) {
         if (err) {
@@ -25,8 +25,64 @@ router.get('/', function (req, res, next) {
             users: users
         });
     });
-});
+});*/
 
+/* GET data list by query parameters */
+router.get('/', function (req, res, next) {
+    var queryParams = req.query;
+    console.log('Query params: ', queryParams);
+    
+    var firstName = req.query.firstName;
+    var lastName = req.query.lastName;
+    var username = req.query.userName;
+    var password = req.query.password;
+    var email = req.query.email;
+    var latitude = req.query.latitude;
+    var longitude = req.query.longitude;
+    
+    var start = parseInt(req.query.start) || 0;
+    var limit = parseInt(req.query.limit) || 0;
+    var sort = req.query.sort || null;
+    
+    var filter = {};
+    
+    if (typeof firstName !== 'undefined') {
+        filter.first_name = new RegExp('^' + firstName, "i");
+    }
+    
+    if (typeof lastName !== 'undefined') {
+        filter.last_name = new RegExp('^' + lastName, "i");
+    }
+    
+    if (typeof username !== 'undefined') {
+        filter.username = username;
+    }
+    
+    if (typeof email !== 'undefined') {
+        filter.email = email;
+    }
+    
+    // call with promise
+    dataSchema.list(filter, start, limit, sort).then(function (dataFind) {
+        if (dataFind.length > 0) {
+            res.json({
+                success: true,
+                users: dataFind
+            }); 
+            console.log("Successfully query");
+        } else {
+            res.json({
+                success: false,
+                message: "Data not found"
+            });
+            console.log("Data not found");
+        }       
+
+    }).catch(function (err) {
+        next("Error in query");
+    });
+});
+ 
 /* GET data by id */
 router.get('/:id', function (req, res, next) {
     var id = req.params.id;    

@@ -13,7 +13,7 @@ var mongoose = require('mongoose');
 // schema
 var dataSchema = mongoose.model('SavedSearch');
 
-/* GET savedSearch list */
+/* GET savedSearch list
 router.get('/', function (req, res, next) {
     dataSchema.find({}, function (err, savedSearches) {
         if (err) {
@@ -24,6 +24,54 @@ router.get('/', function (req, res, next) {
             success: true,
             savedSearches: savedSearches
         });
+    });
+});*/
+
+/* GET data list by query parameters */
+router.get('/', function (req, res, next) {
+    var queryParams = req.query;
+    console.log('Query params: ', queryParams);
+    
+    var user = req.query.user;
+    var category = req.query.category;
+    var keywords = req.query.keywords;
+        
+    var start = parseInt(req.query.start) || 0;
+    var limit = parseInt(req.query.limit) || 0;
+    var sort = req.query.sort || null;
+    
+    var filter = {};
+    
+    if (typeof user !== 'undefined') {
+        filter.user = user;
+    }
+    
+    if (typeof category !== 'undefined') {
+        filter.category = category;
+    }
+    
+    if (typeof keywords !== 'undefined') {
+        filter.keywords = new RegExp('^' + keywords, "i");
+    }
+    
+    // call with promise
+    dataSchema.list(filter, start, limit, sort).then(function (dataFind) {
+        if (dataFind.length > 0) {
+            res.json({
+                success: true,
+                savedSearches: dataFind
+            }); 
+            console.log("Successfully query");
+        } else {
+            res.json({
+                success: false,
+                message: "Data not found"
+            });
+            console.log("Data not found");
+        }       
+
+    }).catch(function (err) {
+        next("Error in query");
     });
 });
 

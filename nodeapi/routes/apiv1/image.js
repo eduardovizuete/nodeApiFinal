@@ -13,7 +13,7 @@ var mongoose = require('mongoose');
 // schema
 var dataSchema = mongoose.model('Image');
 
-/* GET image list */
+/* GET image list
 router.get('/', function (req, res, next) {
     dataSchema.find({}, function (err, images) {
         if (err) {
@@ -24,6 +24,49 @@ router.get('/', function (req, res, next) {
             success: true,
             images: images
         });
+    });
+});*/
+
+/* GET data list by query parameters */
+router.get('/', function (req, res, next) {
+    var queryParams = req.query;
+    console.log('Query params: ', queryParams);
+    
+    var product = req.query.product;
+    var azure_id = req.query.azureId;
+        
+    var start = parseInt(req.query.start) || 0;
+    var limit = parseInt(req.query.limit) || 0;
+    var sort = req.query.sort || null;
+    
+    var filter = {};
+    
+    if (typeof product !== 'undefined') {
+        filter.product = product;
+    }
+    
+    if (typeof azure_id !== 'undefined') {
+        filter.azure_id = new RegExp('^' + azure_id, "i");
+    }
+    
+    // call with promise
+    dataSchema.list(filter, start, limit, sort).then(function (dataFind) {
+        if (dataFind.length > 0) {
+            res.json({
+                success: true,
+                images: dataFind
+            }); 
+            console.log("Successfully query");
+        } else {
+            res.json({
+                success: false,
+                message: "Data not found"
+            });
+            console.log("Data not found");
+        }       
+
+    }).catch(function (err) {
+        next("Error in query");
     });
 });
 
