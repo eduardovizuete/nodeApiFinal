@@ -9,9 +9,14 @@ require('../../models/userSchema');
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+var createHash = require('sha.js');
 
 // schema
 var dataSchema = mongoose.model('User');
+
+// enable jwt authentication
+var jwtAut = require('../../lib/jwtAuth');
+router.use(jwtAut()); 
 
 /* GET data list
 router.get('/', function (req, res, next) {
@@ -124,6 +129,12 @@ router.post('/', function (req, res, next) {
         latitude: req.body.latitude,
         longitude: req.body.longitude
     });
+    
+    // encriptar clave
+    var sha256 = createHash('sha256');
+    var encrip = sha256.update(newData.password, 'utf8').digest('hex');
+    newData.password = encrip;
+    console.log('Clave encriptada: ', newData.password);
 
     // save data   
     newData.save(function (err, newDataSaved) {
@@ -188,6 +199,12 @@ router.put('/:id', function (req, res, next) {
         latitude: req.body.latitude,
         longitude: req.body.longitude
     });
+    
+    // encriptar clave
+    var sha256 = createHash('sha256');
+    var encrip = sha256.update(newData.password, 'utf8').digest('hex');
+    newData.password = encrip;
+    console.log('Clave encriptada: ', newData.password);
 
     dataSchema.findByIdAndUpdate(
         idUpdate, 

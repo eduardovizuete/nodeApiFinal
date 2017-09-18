@@ -32,6 +32,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 
+// middleware login
+app.use('/apiv1/login', require('./routes/apiv1/login')); 
+
+// middleware register user
+app.use('/apiv1/userRegister', require('./routes/apiv1/userRegister'));
+
 // middleware category
 app.use('/apiv1/category', require('./routes/apiv1/category'));
 

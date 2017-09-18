@@ -13,6 +13,10 @@ var mongoose = require('mongoose');
 // schema
 var dataSchema = mongoose.model('Transaction');
 
+// enable jwt authentication
+var jwtAut = require('../../lib/jwtAuth');
+router.use(jwtAut());
+
 /* GET transaction list
 router.get('/', function (req, res, next) {
     dataSchema.find({}, function (err, transactions) {
