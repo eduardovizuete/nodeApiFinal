@@ -30,7 +30,10 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
+// publish documentation
+app.use(express.static(path.join(__dirname, 'docs/apidoc')));
+
+//app.use('/', index);
 
 // middleware login
 app.use('/apiv1/login', require('./routes/apiv1/login')); 

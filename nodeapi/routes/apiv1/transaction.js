@@ -31,6 +31,51 @@ router.get('/', function (req, res, next) {
     });
 });*/
 
+/**
+ * @api {get} /apiv1/transaction Get transactions
+ * @apiName /apiv1/transaction
+ * @apiGroup Transaction
+ *
+ * @apiHeader {String} x-access-token User unique access-key.
+ *
+ * @apiParam {String} [product] Id Product.
+ * @apiParam {String} [seller] Id seller.
+ * @apiParam {String} [buyer] Id buyer.
+ * @apiParam {String} [start] Number start records.
+ * @apiParam {String} [limit] Number limit records.
+ * @apiParam {String} [sort] Name of parameter to sort.
+ *
+ *
+ * @apiSuccess {String} success true.
+ * @apiSuccess {String} transactions Transaction list.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "success": "true",
+ *          "transactions": [
+ *              {
+ *                  "_id": "",
+ *                  "product": "",
+ *                  "seller": "",
+ *                  "buyer": "",
+ *                  "date": "date",
+ *                  "__v": 0               
+ *              }
+ *          ]
+ *     }
+ *
+ * @apiError {String}   success         false.
+ * @apiError {String}   message         message error.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "success": "false",
+ *       "message": "Data not found"
+ *     }
+ */
+
 /* GET data list by query parameters */
 router.get('/', function (req, res, next) {
     var queryParams = req.query;
@@ -79,6 +124,45 @@ router.get('/', function (req, res, next) {
     });
 });
 
+/**
+ * @api {get} /apiv1/transaction/:id Get transaction by id
+ * @apiName /apiv1/transaction/:id
+ * @apiGroup Transaction
+ *
+ * @apiHeader {String} x-access-token User unique access-key.
+ *
+ * @apiParam {String} id Transaction id.
+ *
+ * @apiSuccess {String} success true.
+ * @apiSuccess {String} transaction Transaction list.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *         success: true,
+ *         transaction: {
+  *            "_id": "",
+ *             "product": "",
+ *             "seller": "",
+ *             "buyer": "",
+ *             "date": "date",
+ *             "__v": 0             
+ *         }   
+ *     }
+ *
+ * @apiError {String}   message     message error.
+ * @apiError {String}   id          id transaction.
+ * @apiError {String}   success     false.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "message": "Data not found",
+ *       "id": id,
+ *       "success": false
+ *     }
+ */
+
 /* GET data by id */
 router.get('/:id', function (req, res, next) {
     var id = req.params.id;    
@@ -106,6 +190,44 @@ router.get('/:id', function (req, res, next) {
     });
 });
 
+/**
+ * @api {post} /apiv1/transaction Create transaction
+ * @apiName PostTransaction
+ * @apiGroup Transaction
+ *
+ * @apiHeader {String} x-access-token User unique access-key.
+ *
+ * @apiParam {String} product Id Product.
+ * @apiParam {String} seller Id seller.
+ * @apiParam {String} buyer Id buyer.
+ * @apiParam {Date} date Date transaction.
+ *
+ * @apiSuccess {String} success true.
+ * @apiSuccess {String} newData Data of transaction generated.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "success": "true",
+ *          "newData": {
+ *              "__v": "",
+ *             "product": "",
+ *             "seller": "",
+ *             "buyer": "",
+ *             "date": "date",
+ *              "_id": ""
+ *          }
+ *     }
+ *
+ * @apiError {String}   success         false.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "success": "false"
+ *     }
+ */
+
 /* POST data */
 router.post('/', function (req, res, next) {
     console.log('Body: ', req.body);
@@ -130,6 +252,40 @@ router.post('/', function (req, res, next) {
         });
     });
 });
+
+/**
+ * @api {delete} /apiv1/transaction/:transaction Delete transaction by id
+ * @apiName /apiv1/transaction/:transaction
+ * @apiGroup Transaction
+ *
+ * @apiHeader {String} x-access-token User unique access-key.
+ *
+ * @apiParam {String} transaction Transaction id.
+ *
+ * @apiSuccess {String} message message.
+ * @apiSuccess {String} id id transaction.
+ * @apiSuccess {String} success true.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "message": "Successfully deleted",
+ *          "id": "",
+ *          "success": true
+ *     }
+ *
+ * @apiError {String}   message     message error.
+ * @apiError {String}   id          id transaction.
+ * @apiError {String}   success     false.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *          "message": "Data not found",
+ *          "id": "",
+ *          "success": false
+ *     }
+ */
 
 /* DELETE data */
 router.delete('/:transaction', function (req, res, next) {
@@ -164,11 +320,59 @@ router.delete('/:transaction', function (req, res, next) {
     );
 });
 
+/**
+ * @api {put} /apiv1/transaction/:idUpdate Update transaction by id
+ * @apiName  /apiv1/transaction/:idUpdate
+ * @apiGroup Transaction
+ *
+ * @apiHeader {String} x-access-token User unique access-key.
+ *
+ * @apiParam {String} idUpdate Transaction id.
+ *
+ * @apiParam {String} product Id Product.
+ * @apiParam {String} seller Id seller.
+ * @apiParam {String} buyer Id buyer.
+ * @apiParam {Date} date Date transaction.
+ *
+ * @apiSuccess {String} message message.
+ * @apiSuccess {String} id id transaction.
+ * @apiSuccess {String} newData Data of transaction updated.
+ * @apiSuccess {String} success true.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "message": "Successfully updated",
+ *          "id": "",
+ *          "success": "true",
+ *          "newData": {
+ *              "__v": "",
+ *              "product": "",
+ *              "seller": "",
+ *              "buyer": "",
+ *              "date": "date",
+ *              "_id": ""
+ *          }
+ *     }
+ *
+ * @apiError {String}   message     message error.
+ * @apiError {String}   id          id transaction.
+ * @apiError {String}   success     false.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *          "message": "Data not found",
+ *          "id": "",
+ *          "success": false
+ *     }
+ */
+
 /* PUT data */
-router.put('/:id', function (req, res, next) {
+router.put('/:idUpdate', function (req, res, next) {
     console.log('Body: ', req.body);
     
-    var idUpdate = req.params.id
+    var idUpdate = req.params.idUpdate
     console.log('Update id: ', idUpdate);
 
     // data from post request

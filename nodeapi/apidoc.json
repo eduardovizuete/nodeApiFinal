@@ -1,0 +1,11 @@
+{
+    "name": "NODEJS API STORE",
+    "version": "1.0.0",
+    "description": "API STORE Final Project KeepCoding Bootcamp",
+    "title": "API STORE Final Project KeepCoding Bootcamp",
+    "url": "http://localhost:3000",
+    "template": {
+        "withCompare": true,
+        "withGenerator": true
+    }
+}

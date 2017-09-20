@@ -27,6 +27,53 @@ router.get('/', function (req, res, next) {
     });
 });*/
 
+/**
+ * @api {get} /apiv1/product Get products
+ * @apiName /apiv1/product
+ * @apiGroup Product
+ *
+ * @apiParam {String} [name] Product name.
+ * @apiParam {String} [description] Product description.
+ * @apiParam {String} [category] Category id.
+ * @apiParam {String} [seller] Seller id.
+ * @apiParam {String} [state] Product state.
+ * @apiParam {String} [start] Number start records.
+ * @apiParam {String} [limit] Number limit records.
+ * @apiParam {String} [sort] Name of parameter to sort.
+ *
+ * @apiSuccess {String} success true.
+ * @apiSuccess {String} products Product list.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "success": "true",
+ *          "products": [
+ *              {
+ *                  "_id": "",
+ *                  "name": "",
+ *                  "description": "",
+ *                  "category": "",
+ *                  "seller": "",
+ *                  "published_date": "date",
+ *                  "state": "",
+ *                  "price": 0,
+ *                  "__v": 0    
+ *              }
+ *          ]
+ *     }
+ *
+ * @apiError {String}   success         false.
+ * @apiError {String}   message         message error.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "success": "false",
+ *       "message": "Data not found"
+ *     }
+ */
+
 /* GET data list by query parameters */
 router.get('/', function (req, res, next) {
     var queryParams = req.query;
@@ -85,6 +132,47 @@ router.get('/', function (req, res, next) {
     });
 });
 
+/**
+ * @api {get} /apiv1/product/:id Get product by id
+ * @apiName /apiv1/product/:id
+ * @apiGroup Product
+ *
+ *
+ * @apiParam {String} id Product id.
+ *
+ * @apiSuccess {String} success true.
+ * @apiSuccess {String} product Product list.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "success": "true",
+ *          "product": {
+ *              "_id": "",
+ *              "name": "",
+ *              "description": "",
+ *              "category": "",
+ *              "seller": "",
+ *              "published_date": "date",
+ *              "state": "",
+ *              "price": 0,
+ *              "__v": 0      
+ *          }
+ *     }
+ *
+ * @apiError {String}   message     message error.
+ * @apiError {String}   id          id product.
+ * @apiError {String}   success     false.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "message": "Data not found",
+ *       "id": id,
+ *       "success": false
+ *     }
+ */
+
 /* GET data by id */
 router.get('/:id', function (req, res, next) {
     var id = req.params.id;    
@@ -111,6 +199,48 @@ router.get('/:id', function (req, res, next) {
         }       
     });
 });
+
+/**
+ * @api {post} /apiv1/product Create product
+ * @apiName PostProduct
+ * @apiGroup Product
+ *
+ * @apiParam {String} name Product name.
+ * @apiParam {String} description Product description.
+ * @apiParam {String} category Category id.
+ * @apiParam {String} seller Seller id.
+ * @apiParam {Date}   publishedDate Product publish date.
+ * @apiParam {String} state Product state.
+ * @apiParam {Number} price Product price.
+ *
+ * @apiSuccess {String} success true.
+ * @apiSuccess {String} newData Data of product generated.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "success": "true",
+ *          "newData": {
+ *              "__v": "",
+ *              "name": "",
+ *              "description": "",
+ *              "category": "",
+ *              "seller": "",
+ *              "published_date": "date",
+ *              "state": "",
+ *              "price": 0,
+ *              "_id": ""
+ *          }
+ *     }
+ *
+ * @apiError {String}   success         false.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "success": "false"
+ *     }
+ */
 
 /* POST data */
 router.post('/', function (req, res, next) {
@@ -139,6 +269,39 @@ router.post('/', function (req, res, next) {
         });
     });
 });
+
+/**
+ * @api {delete} /apiv1/product/:product Delete product by id
+ * @apiName /apiv1/product/:product
+ * @apiGroup Product
+ *
+ *
+ * @apiParam {String} product Product id.
+ *
+ * @apiSuccess {String} message message.
+ * @apiSuccess {String} id id product.
+ * @apiSuccess {String} success true.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "message": "Successfully deleted",
+ *          "id": "",
+ *          "success": true
+ *     }
+ *
+ * @apiError {String}   message     message error.
+ * @apiError {String}   id          id product.
+ * @apiError {String}   success     false.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *          "message": "Data not found",
+ *          "id": "",
+ *          "success": false
+ *     }
+ */
 
 /* DELETE data */
 router.delete('/:product', function (req, res, next) {
@@ -173,11 +336,63 @@ router.delete('/:product', function (req, res, next) {
     );
 });
 
+/**
+ * @api {put} /apiv1/product/:idUpdate Update product by id
+ * @apiName /apiv1/product/:idUpdate
+ * @apiGroup Product
+ *
+ * @apiParam {String} idUpdate Product id.
+ *
+ * @apiParam {String} name Product name.
+ * @apiParam {String} description Product description.
+ * @apiParam {String} category Category id.
+ * @apiParam {String} seller Seller id.
+ * @apiParam {Date}   publishedDate Product publish date.
+ * @apiParam {String} state Product state.
+ * @apiParam {Number} price Product price.
+ *
+ * @apiSuccess {String} message message.
+ * @apiSuccess {String} id id product.
+ * @apiSuccess {String} newData Data of product updated.
+ * @apiSuccess {String} success true.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "message": "Successfully updated",
+ *          "id": "",
+ *          "success": "true",
+ *          "newData": {
+ *              "__v": "",
+ *              "name": "",
+ *              "description": "",
+ *              "category": "",
+ *              "seller": "",
+ *              "published_date": "date",
+ *              "state": "",
+ *              "price": 0,
+ *              "_id": ""
+ *          }
+ *     }
+ *
+ * @apiError {String}   message     message error.
+ * @apiError {String}   id          id product.
+ * @apiError {String}   success     false.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *          "message": "Data not found",
+ *          "id": "",
+ *          "success": false
+ *     }
+ */
+
 /* PUT data */
-router.put('/:id', function (req, res, next) {
+router.put('/:idUpdate', function (req, res, next) {
     console.log('Body: ', req.body);
     
-    var idUpdate = req.params.id
+    var idUpdate = req.params.idUpdate
     console.log('Update id: ', idUpdate);
 
     // data from post request

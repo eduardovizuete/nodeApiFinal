@@ -32,6 +32,57 @@ router.get('/', function (req, res, next) {
     });
 });*/
 
+/**
+ * @api {get} /apiv1/user Get users
+ * @apiName /apiv1/user
+ * @apiGroup User
+ *
+ * @apiHeader {String} x-access-token User unique access-key.
+ *
+ * @apiParam {String} [firstName] User first name.
+ * @apiParam {String} [lastName] User last name .
+ * @apiParam {String} [userName] User name.
+ * @apiParam {String} [password] User password.
+ * @apiParam {String} [email] User email.
+ * @apiParam {String} [latitude] User latitude.
+ * @apiParam {String} [longitude] User longitude. 
+ * @apiParam {String} [start] Number start records.
+ * @apiParam {String} [limit] Number limit records.
+ * @apiParam {String} [sort] Name of parameter to sort.
+ *
+ * @apiSuccess {String} success true.
+ * @apiSuccess {String} user User list.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "success": "true",
+ *          "users": [
+ *              {
+ *                  "_id": "",
+ *                  "first_name": "",
+ *                  "last_name": "",
+ *                  "username": "",
+ *                  "password": "",
+ *                  "email": "",
+ *                  "latitude": "",
+ *                  "longitude": "",
+ *                  "__v": 0               
+ *              }
+ *          ]
+ *     }
+ *
+ * @apiError {String}   success         false.
+ * @apiError {String}   message         message error.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "success": "false",
+ *       "message": "Data not found"
+ *     }
+ */
+
 /* GET data list by query parameters */
 router.get('/', function (req, res, next) {
     var queryParams = req.query;
@@ -87,6 +138,48 @@ router.get('/', function (req, res, next) {
         next("Error in query");
     });
 });
+
+/**
+ * @api {get} /apiv1/user/:id Get user by id
+ * @apiName /apiv1/user/:id
+ * @apiGroup User
+ *
+ * @apiHeader {String} x-access-token User unique access-key.
+ *
+ * @apiParam {String} id User id.
+ *
+ * @apiSuccess {String} success true.
+ * @apiSuccess {String} user User list.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "success": "true",
+ *          "users": {
+ *                  "_id": "",
+ *                  "first_name": "",
+ *                  "last_name": "",
+ *                  "username": "",
+ *                  "password": "",
+ *                  "email": "",
+ *                  "latitude": "",
+ *                  "longitude": "",
+ *                  "__v": 0               
+ *          }
+ *     }
+ *
+ * @apiError {String}   message     message error.
+ * @apiError {String}   id          id user.
+ * @apiError {String}   success     false.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "message": "Data not found",
+ *       "id": id,
+ *       "success": false
+ *     }
+ */
  
 /* GET data by id */
 router.get('/:id', function (req, res, next) {
@@ -114,6 +207,50 @@ router.get('/:id', function (req, res, next) {
         }       
     });
 });
+
+/**
+ * @api {post} /apiv1/user Create user
+ * @apiName PostUser
+ * @apiGroup User
+ *
+ * @apiHeader {String} x-access-token User unique access-key.
+ *
+ * @apiParam {String} firstName User first name.
+ * @apiParam {String} lastName User last name .
+ * @apiParam {String} userName User name.
+ * @apiParam {String} password User password.
+ * @apiParam {String} email User email.
+ * @apiParam {String} [latitude] User latitude.
+ * @apiParam {String} [longitude] User longitude. 
+ *
+ * @apiSuccess {String} success true.
+ * @apiSuccess {String} newData Data of user generated.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "success": "true",
+ *          "newData": {
+ *              "__v": "",
+ *              "first_name": "",
+ *              "last_name": "",
+ *              "username": "",
+ *              "password": "",
+ *              "email": "",
+ *              "latitude": "",
+ *              "longitude": "",
+ *              "_id": ""
+ *          }
+ *     }
+ *
+ * @apiError {String}   success         false.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "success": "false"
+ *     }
+ */
 
 /* POST data */
 router.post('/', function (req, res, next) {
@@ -149,6 +286,40 @@ router.post('/', function (req, res, next) {
     });
 });
 
+/**
+ * @api {delete} /apiv1/user/:user Delete user by id
+ * @apiName /apiv1/user/:user
+ * @apiGroup User
+ *
+ * @apiHeader {String} x-access-token User unique access-key.
+ *
+ * @apiParam {String} user User id.
+ *
+ * @apiSuccess {String} message message.
+ * @apiSuccess {String} id id user.
+ * @apiSuccess {String} success true.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "message": "Successfully deleted",
+ *          "id": "",
+ *          "success": true
+ *     }
+ *
+ * @apiError {String}   message     message error.
+ * @apiError {String}   id          id user.
+ * @apiError {String}   success     false.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *          "message": "Data not found",
+ *          "id": "",
+ *          "success": false
+ *     }
+ */
+
 /* DELETE data */
 router.delete('/:user', function (req, res, next) {
     var idDelete = req.params.user
@@ -182,11 +353,65 @@ router.delete('/:user', function (req, res, next) {
     );
 });
 
+/**
+ * @api {put} /apiv1/user/:idUpdate Update user by id
+ * @apiName /apiv1/user/:idUpdate
+ * @apiGroup User
+ *
+ * @apiHeader {String} x-access-token User unique access-key.
+ *
+ * @apiParam {String} idUpdate User id.
+ * 
+ * @apiParam {String} firstName User first name.
+ * @apiParam {String} lastName User last name .
+ * @apiParam {String} userName User name.
+ * @apiParam {String} password User password.
+ * @apiParam {String} email User email.
+ * @apiParam {String} [latitude] User latitude.
+ * @apiParam {String} [longitude] User longitude. 
+ *
+ * @apiSuccess {String} message message.
+ * @apiSuccess {String} id id user.
+ * @apiSuccess {String} newData Data of user updated.
+ * @apiSuccess {String} success true.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "message": "Successfully updated",
+ *          "id": "",
+ *          "success": "true",
+ *          "newData": {
+ *              "__v": "",
+ *              "first_name": "",
+ *              "last_name": "",
+ *              "username": "",
+ *              "password": "",
+ *              "email": "",
+ *              "latitude": "",
+ *              "longitude": "",
+ *              "_id": ""
+ *          }
+ *     }
+ *
+ * @apiError {String}   message     message error.
+ * @apiError {String}   id          id user.
+ * @apiError {String}   success     false.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *          "message": "Data not found",
+ *          "id": "",
+ *          "success": false
+ *     }
+ */
+
 /* PUT data */
-router.put('/:id', function (req, res, next) {
+router.put('/:idUpdate', function (req, res, next) {
     console.log('Body: ', req.body);
     
-    var idUpdate = req.params.id
+    var idUpdate = req.params.idUpdate
     console.log('Update id: ', idUpdate);
 
     // data from post request

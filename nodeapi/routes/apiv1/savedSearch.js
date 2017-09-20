@@ -13,6 +13,10 @@ var mongoose = require('mongoose');
 // schema
 var dataSchema = mongoose.model('SavedSearch');
 
+// enable jwt authentication
+var jwtAut = require('../../lib/jwtAuth');
+router.use(jwtAut());
+
 /* GET savedSearch list
 router.get('/', function (req, res, next) {
     dataSchema.find({}, function (err, savedSearches) {
@@ -26,6 +30,50 @@ router.get('/', function (req, res, next) {
         });
     });
 });*/
+
+/**
+ * @api {get} /apiv1/savedSearch Get saved searches
+ * @apiName /apiv1/savedSearch
+ * @apiGroup SavedSearch
+ *
+ * @apiHeader {String} x-access-token User unique access-key.
+ *
+ * @apiParam {String} [user] Id user.
+ * @apiParam {String} [category] Id category.
+ * @apiParam {String} [keywords] Keywords to search.
+ * @apiParam {String} [start] Number start records.
+ * @apiParam {String} [limit] Number limit records.
+ * @apiParam {String} [sort] Name of parameter to sort.
+ *
+ *
+ * @apiSuccess {String} success true.
+ * @apiSuccess {String} savedSearches Saved search list.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "success": "true",
+ *          "savedSearches": [
+ *              {
+ *                  "_id": "",
+ *                  "user": "",
+ *                  "category": "",
+ *                  "keywords": "",
+ *                  "__v": 0               
+ *              }
+ *          ]
+ *     }
+ *
+ * @apiError {String}   success         false.
+ * @apiError {String}   message         message error.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "success": "false",
+ *       "message": "Data not found"
+ *     }
+ */
 
 /* GET data list by query parameters */
 router.get('/', function (req, res, next) {
@@ -75,6 +123,44 @@ router.get('/', function (req, res, next) {
     });
 });
 
+/**
+ * @api {get} /apiv1/savedSearch/:id Get saved search by id
+ * @apiName /apiv1/savedSearch/:id
+ * @apiGroup SavedSearch
+ *
+ * @apiHeader {String} x-access-token User unique access-key.
+ *
+ * @apiParam {String} id SavedSearch id.
+ *
+ * @apiSuccess {String} success true.
+ * @apiSuccess {String} savedSearch Saved search list.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *         success: true,
+ *         savedSearch: {
+ *             "_id": "",
+ *             "user": "",
+ *             "category": "",
+ *             "keywords": "",
+ *             "__v": 0             
+ *         }   
+ *     }
+ *
+ * @apiError {String}   message     message error.
+ * @apiError {String}   id          id savedSearch.
+ * @apiError {String}   success     false.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "message": "Data not found",
+ *       "id": id,
+ *       "success": false
+ *     }
+ */
+
 /* GET data by id */
 router.get('/:id', function (req, res, next) {
     var id = req.params.id;    
@@ -102,6 +188,42 @@ router.get('/:id', function (req, res, next) {
     });
 });
 
+/**
+ * @api {post} /apiv1/savedSearch Create saved search
+ * @apiName PostSavedSearch
+ * @apiGroup SavedSearch
+ *
+ * @apiHeader {String} x-access-token User unique access-key.
+ *
+ * @apiParam {String} user Id user.
+ * @apiParam {String} category Id category.
+ * @apiParam {String} keywords Keywords to search.
+ *
+ * @apiSuccess {String} success true.
+ * @apiSuccess {String} newData Data of saved search generated.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "success": "true",
+ *          "newData": {
+ *              "__v": "",
+ *              "user": "",
+ *              "category": "",
+ *              "keywords": "",
+ *              "_id": ""
+ *          }
+ *     }
+ *
+ * @apiError {String}   success         false.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "success": "false"
+ *     }
+ */
+
 /* POST data */
 router.post('/', function (req, res, next) {
     console.log('Body: ', req.body);
@@ -125,6 +247,40 @@ router.post('/', function (req, res, next) {
         });
     });
 });
+
+/**
+ * @api {delete} /apiv1/savedSearch/:savedSearch Delete saved search by id
+ * @apiName /apiv1/savedSearch/:savedSearch
+ * @apiGroup SavedSearch
+ *
+ * @apiHeader {String} x-access-token User unique access-key.
+ *
+ * @apiParam {String} savedSearch Saved search id.
+ *
+ * @apiSuccess {String} message message.
+ * @apiSuccess {String} id id saved search.
+ * @apiSuccess {String} success true.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "message": "Successfully deleted",
+ *          "id": "",
+ *          "success": true
+ *     }
+ *
+ * @apiError {String}   message     message error.
+ * @apiError {String}   id          id saved search.
+ * @apiError {String}   success     false.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *          "message": "Data not found",
+ *          "id": "",
+ *          "success": false
+ *     }
+ */
 
 /* DELETE data */
 router.delete('/:savedSearch', function (req, res, next) {
@@ -159,11 +315,57 @@ router.delete('/:savedSearch', function (req, res, next) {
     );
 });
 
+/**
+ * @api {put} /apiv1/savedSearch/:idUpdate Update saved search by id
+ * @apiName  /apiv1/savedSearch/:idUpdate
+ * @apiGroup SavedSearch
+ *
+ * @apiHeader {String} x-access-token User unique access-key.
+ *
+ * @apiParam {String} idUpdate Saved search id.
+ *
+ * @apiParam {String} user Id user.
+ * @apiParam {String} category Id category.
+ * @apiParam {String} keywords Keywords to search.
+ *
+ * @apiSuccess {String} message message.
+ * @apiSuccess {String} id id saved search.
+ * @apiSuccess {String} newData Data of saved search updated.
+ * @apiSuccess {String} success true.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "message": "Successfully updated",
+ *          "id": "",
+ *          "success": "true",
+ *          "newData": {
+ *              "__v": "",
+ *              "user": "",
+ *              "category": "",
+ *              "keywords": "",
+ *              "_id": ""
+ *          }
+ *     }
+ *
+ * @apiError {String}   message     message error.
+ * @apiError {String}   id          id transaction.
+ * @apiError {String}   success     false.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *          "message": "Data not found",
+ *          "id": "",
+ *          "success": false
+ *     }
+ */
+
 /* PUT data */
-router.put('/:id', function (req, res, next) {
+router.put('/:idUpdate', function (req, res, next) {
     console.log('Body: ', req.body);
     
-    var idUpdate = req.params.id
+    var idUpdate = req.params.idUpdate
     console.log('Update id: ', idUpdate);
 
     // data from post request

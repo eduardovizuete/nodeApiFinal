@@ -27,6 +27,39 @@ router.get('/', function (req, res, next) {
     });
 });*/
 
+/**
+ * @api {get} /apiv1/image Get images
+ * @apiName /apiv1/image
+ * @apiGroup Image
+ *
+ * @apiSuccess {String} success true.
+ * @apiSuccess {String} images Image list.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "success": "true",
+ *          "images": [
+ *              {
+ *                  "_id": "",
+ *                  product: "",
+ *                  azure_id: "",
+ *                  "__v": 0    
+ *              }
+ *          ]
+ *     }
+ *
+ * @apiError {String}   success         false.
+ * @apiError {String}   message         message error.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "success": "false",
+ *       "message": "Data not found"
+ *     }
+ */
+
 /* GET data list by query parameters */
 router.get('/', function (req, res, next) {
     var queryParams = req.query;
@@ -70,6 +103,42 @@ router.get('/', function (req, res, next) {
     });
 });
 
+/**
+ * @api {get} /apiv1/image/:id Get image by id
+ * @apiName /apiv1/image/:id
+ * @apiGroup Image
+ *
+ *
+ * @apiParam {String} id Image id.
+ *
+ * @apiSuccess {String} success true.
+ * @apiSuccess {String} image Image list.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *         success: true,
+ *         image: {
+ *              "_id": "",
+ *              product: "",
+ *              azure_id: "",
+ *              "__v": 0
+ *          }   
+ *     }
+ *
+ * @apiError {String}   message     message error.
+ * @apiError {String}   id          id image.
+ * @apiError {String}   success     false.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "message": "Data not found",
+ *       "id": id,
+ *       "success": false
+ *     }
+ */
+
 /* GET data by id */
 router.get('/:id', function (req, res, next) {
     var id = req.params.id;    
@@ -97,6 +166,38 @@ router.get('/:id', function (req, res, next) {
     });
 });
 
+/**
+ * @api {post} /apiv1/image Create image
+ * @apiName PostImage
+ * @apiGroup Image
+ *
+ * @apiParam {String} product Product id.
+ * @apiParam {String} azureId Azure id.
+ *
+ * @apiSuccess {String} success true.
+ * @apiSuccess {String} newData Data of image generated.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "success": "true",
+ *          "newData": {
+ *              "__v": "",
+ *              product: "",
+ *              azure_id: "",
+ *              "_id": ""
+ *          }
+ *     }
+ *
+ * @apiError {String}   success         false.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "success": "false"
+ *     }
+ */
+
 /* POST data */
 router.post('/', function (req, res, next) {
     console.log('Body: ', req.body);
@@ -119,6 +220,39 @@ router.post('/', function (req, res, next) {
         });
     });
 });
+
+/**
+ * @api {delete} /apiv1/image/:image Delete image by id
+ * @apiName /apiv1/image/:image
+ * @apiGroup Image
+ *
+ *
+ * @apiParam {String} image Image id.
+ *
+ * @apiSuccess {String} message message.
+ * @apiSuccess {String} id id image.
+ * @apiSuccess {String} success true.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "message": "Successfully deleted",
+ *          "id": "",
+ *          "success": true
+ *     }
+ *
+ * @apiError {String}   message     message error.
+ * @apiError {String}   id          id image.
+ * @apiError {String}   success     false.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *          "message": "Data not found",
+ *          "id": "",
+ *          "success": false
+ *     }
+ */
 
 /* DELETE data */
 router.delete('/:image', function (req, res, next) {
@@ -153,11 +287,53 @@ router.delete('/:image', function (req, res, next) {
     );
 });
 
+/**
+ * @api {put} /apiv1/image/:idUpdate Update image by id
+ * @apiName /apiv1/image/:idUpdate
+ * @apiGroup Image
+ *
+ * @apiParam {String} idUpdate Image id.
+ * 
+ * @apiParam {String} product Product id.
+ * @apiParam {String} azureId Azure id.
+ *
+ * @apiSuccess {String} message message.
+ * @apiSuccess {String} id id image.
+ * @apiSuccess {String} newData Data of image updated.
+ * @apiSuccess {String} success true.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "message": "Successfully updated",
+ *          "id": "",
+ *          "success": "true",
+ *          "newData": {
+ *              "__v": "",
+ *              product: "",
+ *              azure_id: "",
+ *              "_id": ""
+ *          }
+ *     }
+ *
+ * @apiError {String}   message     message error.
+ * @apiError {String}   id          id image.
+ * @apiError {String}   success     false.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *          "message": "Data not found",
+ *          "id": "",
+ *          "success": false
+ *     }
+ */
+
 /* PUT data */
-router.put('/:id', function (req, res, next) {
+router.put('/:idUpdate', function (req, res, next) {
     console.log('Body: ', req.body);
     
-    var idUpdate = req.params.id
+    var idUpdate = req.params.idUpdate
     console.log('Update id: ', idUpdate);
 
     // data from post request
