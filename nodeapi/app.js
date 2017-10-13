@@ -35,6 +35,12 @@ app.use(express.static(path.join(__dirname, 'docs/apidoc')));
 
 //app.use('/', index);
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 // middleware login
 app.use('/apiv1/login', require('./routes/apiv1/login')); 
 

@@ -13,10 +13,30 @@ var mongoose = require('mongoose');
 // schema
 var dataSchema = mongoose.model('Category');
 
+/* GET data list */
+// router.get('/', function (req, res, next) {
+//     dataSchema.find({}, function (err, categories) {
+//         if (err) {
+//             next(err);
+//             return;
+//         }
+//         res.json({
+//             success: true,
+//             categories: categories
+//         });
+//     });
+// });
+
 /**
  * @api {get} /apiv1/category Get categories
  * @apiName /apiv1/category
  * @apiGroup Category
+ *
+ *
+ * @apiParam {String} [name] Category name.
+ * @apiParam {String} [start] Number start records.
+ * @apiParam {String} [limit] Number limit records.
+ * @apiParam {String} [sort] Name of parameter to sort.
  *
  * @apiSuccess {String} success true.
  * @apiSuccess {String} categories Category list.
@@ -29,7 +49,7 @@ var dataSchema = mongoose.model('Category');
  *              {
  *                  "_id": "",
  *                  "name": "",
- *                  "__v": 0    
+ *                  "__v": 0               
  *              }
  *          ]
  *     }
@@ -45,17 +65,41 @@ var dataSchema = mongoose.model('Category');
  *     }
  */
 
-/* GET data list */
+/* GET data list by query parameters */
 router.get('/', function (req, res, next) {
-    dataSchema.find({}, function (err, categories) {
-        if (err) {
-            next(err);
-            return;
-        }
-        res.json({
-            success: true,
-            categories: categories
-        });
+    var queryParams = req.query;
+    console.log('Query params: ', queryParams);
+    
+    var name = req.query.name;
+    
+    var start = parseInt(req.query.start) || 0;
+    var limit = parseInt(req.query.limit) || 0;
+    var sort = req.query.sort || null;
+    
+    var filter = {};
+    
+    if (typeof name !== 'undefined') {
+        filter.name = new RegExp('^' + name, "i");
+    }
+    
+    // call with promise
+    dataSchema.list(filter, start, limit, sort).then(function (dataFind) {
+        if (dataFind.length > 0) {
+            res.json({
+                success: true,
+                categories: dataFind
+            }); 
+            console.log("Successfully query");
+        } else {
+            res.json({
+                success: false,
+                message: "Data not found"
+            });
+            console.log("Data not found");
+        }       
+
+    }).catch(function (err) {
+        next("Error in query");
     });
 });
 

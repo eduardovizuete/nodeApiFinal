@@ -75,6 +75,40 @@ define({ "api": [
     "title": "Get categories",
     "name": "_apiv1_category",
     "group": "Category",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "name",
+            "description": "<p>Category name.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "start",
+            "description": "<p>Number start records.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "limit",
+            "description": "<p>Number limit records.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "sort",
+            "description": "<p>Name of parameter to sort.</p>"
+          }
+        ]
+      }
+    },
     "success": {
       "fields": {
         "Success 200": [
@@ -97,7 +131,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n     \"success\": \"true\",\n     \"categories\": [\n         {\n             \"_id\": \"\",\n             \"name\": \"\",\n             \"__v\": 0    \n         }\n     ]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n     \"success\": \"true\",\n     \"categories\": [\n         {\n             \"_id\": \"\",\n             \"name\": \"\",\n             \"__v\": 0               \n         }\n     ]\n}",
           "type": "json"
         }
       ]
