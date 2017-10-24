@@ -3,6 +3,7 @@
 */
 
 var express = require('express');
+var docserver = require('docserver');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -31,7 +32,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // publish documentation
-app.use(express.static(path.join(__dirname, 'docs/apidoc')));
+app.use('/apidoc', express.static(path.join(__dirname, 'docs/apidoc')));
+app.use('/dbdoc', express.static(path.join(__dirname, 'docs/db_doc/html_doc')));
+
+
+app.use(docserver({ // Con este modulo servimos en raiz del API la documentación.
+    dir: __dirname + '',  // serve Markdown files in the docs directory...
+    url: '/'}                  // ...and serve them at the root of the site
+));
 
 //app.use('/', index);
 

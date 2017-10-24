@@ -4,13 +4,16 @@
   "private": true,
   "scripts": {
     "start": "DEBUG=nodeapi:* nodemon ./bin/www",
-    "installDB": "DEBUG=nodeapi:* nodemon ./lib/install_db.js"
+    "installDB": "DEBUG=nodeapi:* nodemon ./lib/install_db.js",
+    "docs": "apidoc -i routes/apiv1/ -o docs/apidoc/", 
+    "postinstall": "npm run docs" 
   },
   "dependencies": {
     "apidoc": "^0.17.6",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
+    "docserver": "^0.1.4",
     "ejs": "~2.5.6",
     "express": "~4.15.2",
     "jsonwebtoken": "^8.0.1",
