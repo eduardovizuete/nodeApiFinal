@@ -9,6 +9,10 @@
 ```sh
 	npm installDB
 ```
+* Generate api documentation
+```sh
+	npm docs
+```
 
 ### Database model 
     

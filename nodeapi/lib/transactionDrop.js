@@ -9,7 +9,7 @@ var colTransactions = mongoose.connection.collections[transactionSchema.collecti
 
 colTransactions.drop(function (err) {
 	if (err) {
-		console.log('Error: ', err);
+		console.log('Error Transaction drop collection:', err.message);
 		return;
 	}
 	console.log('Transaction drop collection');

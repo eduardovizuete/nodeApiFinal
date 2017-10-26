@@ -1,11 +1,20 @@
 "use strict";
 
 var mongoose = require('mongoose');
+const objectId = mongoose.Schema.Types.ObjectId;
 
 // define image schema
 var imageSchema = mongoose.Schema({
-    product: String,
-    azure_id: String
+    product: {
+        type: objectId,
+        ref: 'Product',
+        required: true,
+        index: true
+    },
+    azure_id: {
+        type: String,
+        required: true
+    }
 });
 
 // filter, sort and paginated list

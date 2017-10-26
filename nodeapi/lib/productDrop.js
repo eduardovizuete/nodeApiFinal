@@ -9,7 +9,7 @@ var colProducts = mongoose.connection.collections[productSchema.collection.colle
 
 colProducts.drop(function (err) {
 	if (err) {
-		console.log('Error: ', err);
+		console.log('Error Product drop collection:', err.message);
 		return;
 	}
 	console.log('Product drop collection');

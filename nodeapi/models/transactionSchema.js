@@ -1,13 +1,32 @@
 "use strict";
 
 var mongoose = require('mongoose');
+const objectId = mongoose.Schema.Types.ObjectId;
 
 // define user schema
 var transactionSchema = mongoose.Schema({
-    product: String,
-    seller: String,
-    buyer: String,
-    date: Date
+    product: {
+        type: objectId,
+        ref: 'Product',
+        required: true,
+        index: true
+    },
+    seller: {
+        type: objectId,
+        ref: 'User',
+        required: true,
+        index: true
+    },
+    buyer: {
+        type: objectId,
+        ref: 'User',
+        required: true,
+        index: true
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 // filter, sort and paginated list

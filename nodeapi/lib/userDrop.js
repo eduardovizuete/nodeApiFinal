@@ -9,7 +9,7 @@ var colUsers = mongoose.connection.collections[userSchema.collection.collectionN
 
 colUsers.drop(function (err) {
 	if (err) {
-		console.log('Error: ', err);
+		console.log('Error User drop collection:', err.message);
 		return;
 	}
 	console.log('User drop collection');

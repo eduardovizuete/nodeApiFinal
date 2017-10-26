@@ -4,7 +4,11 @@ var mongoose = require('mongoose');
 
 // define category schema
 var categorySchema = mongoose.Schema({
-	name: String
+	name: {
+        type: String,
+        required: true,
+        index: true
+    }
 });
 
 // filter, sort and paginated list

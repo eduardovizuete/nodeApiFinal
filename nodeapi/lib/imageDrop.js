@@ -9,7 +9,7 @@ var colImage = mongoose.connection.collections[imageSchema.collection.collection
 
 colImage.drop(function (err) {
 	if (err) {
-		console.log('Error: ', err);
+		console.log('Error Image drop collection: ', err);
 		return;
 	}
 	console.log('Image drop collection');

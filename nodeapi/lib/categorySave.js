@@ -10,8 +10,7 @@ for (var i=0; i<10; i++) {
 
 	cat.save(function (err, catSaved) {
 		if (err) {
-			console.log('Category error: ', catSaved);
-			next(err);
+			console.log('Category saved error: ', err.message);
 			return;
 		}
 		console.log('Category saved', catSaved);

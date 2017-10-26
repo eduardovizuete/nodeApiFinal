@@ -35,12 +35,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/apidoc', express.static(path.join(__dirname, 'docs/apidoc')));
 app.use('/dbdoc', express.static(path.join(__dirname, 'docs/db_doc/html_doc')));
 
-
-app.use(docserver({ // Con este modulo servimos en raiz del API la documentación.
-    dir: __dirname + '',  // serve Markdown files in the docs directory...
-    url: '/'}                  // ...and serve them at the root of the site
-));
-
 //app.use('/', index);
 
 app.use(function(req, res, next) {
@@ -72,6 +66,11 @@ app.use('/apiv1/savedSearch', require('./routes/apiv1/savedSearch'));
 
 // middleware image
 app.use('/apiv1/image', require('./routes/apiv1/image'));
+
+app.use(docserver({ // Con este modulo servimos en raiz del API la documentación.
+    dir: __dirname + '',  // serve Markdown files in the docs directory...
+    url: '/'}                  // ...and serve them at the root of the site
+));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

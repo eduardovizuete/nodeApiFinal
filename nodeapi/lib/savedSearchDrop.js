@@ -9,7 +9,7 @@ var colSavedSearch = mongoose.connection.collections[savedSearchSchema.collectio
 
 colSavedSearch.drop(function (err) {
 	if (err) {
-		console.log('Error: ', err);
+		console.log('Error SavedSearch drop collection: ', err);
 		return;
 	}
 	console.log('SavedSearch drop collection');

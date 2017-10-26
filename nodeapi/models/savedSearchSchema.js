@@ -1,12 +1,26 @@
 "use strict";
 
 var mongoose = require('mongoose');
+const objectId = mongoose.Schema.Types.ObjectId;
 
 // define savedSearch schema
 var savedSearchSchema = mongoose.Schema({
-    user: String,
-	category: String,
-    keywords: String
+    user: {
+        type: objectId,
+        ref: 'User',
+        required: true,
+        index: true
+    },
+	category: {
+        type: objectId,
+        ref: 'Category',
+        required: true,
+        index: true
+    },
+    keywords: {
+        type: String,
+        required: true
+    }
 });
 
 // filter, sort and paginated list

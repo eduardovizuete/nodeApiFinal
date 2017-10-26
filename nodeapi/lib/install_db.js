@@ -1,44 +1,58 @@
 "use strict";
 
+var sleep = require('system-sleep');
+
 // mongoose connection
 require('./mongoConnection'); 
 
-// drop data
+console.log('Load data ...');
 
-// test model drop category
+// test model drop category & test model save category
+console.log('-> drop category');
 require('./categoryDrop');
-
-// test model drop user
-require('./userDrop');
-
-// test model drop user
-require('./productDrop');
-
-// test model drop transaction
-require('./transactionDrop');
-
-// test model drop transaction
-require('./savedSearchDrop');
-
-// test model drop transaction
-require('./imageDrop');
-
-// insert data
-
-// test model save category
+sleep(2000);
+console.log('-> save category');
 require('./categorySave');
+sleep(3000);
 
-// test model save user
+// test model drop user & test model save user
+console.log('-> drop user');
+require('./userDrop');
+sleep(2000);
+console.log('-> save user');
 require('./userSave');
+sleep(3000);
 
-// test model save product
+// test model drop product & test model save product
+console.log('-> drop product');
+require('./productDrop');
+sleep(2000);
+console.log('-> save product');
 require('./productSave');
+sleep(3000);
 
-// test model save transaction
+// test model drop transaction & test model save transaction
+console.log('-> drop transaction');
+require('./transactionDrop');
+sleep(2000);
+console.log('-> save transaction');
 require('./transactionSave');
+sleep(3000);
 
-// test model save savedSearch
+// test model drop savedSearch & test model save savedSearch
+console.log('-> drop savedSearch');
+require('./savedSearchDrop');
+sleep(2000);
+console.log('-> save savedSearch');
 require('./savedSearchSave');
+sleep(3000);
 
-// test model save image
+// test model drop image & test model save image
+console.log('-> drop image');
+require('./imageDrop');
+sleep(2000);
+console.log('-> save image');
 require('./imageSave');
+sleep(3000);
+
+console.log('Finished load data ...');
