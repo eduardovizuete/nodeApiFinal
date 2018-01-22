@@ -63,9 +63,9 @@ router.post('/', function (req, res, next) {
 
     // data from post request
     var newData = new dataSchema({
-        first_name: req.body.firstName,
-        last_name: req.body.lastName,
-        username: req.body.userName,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        username: req.body.username,
         password: req.body.password,
         email: req.body.email,
         latitude: req.body.latitude,
@@ -81,8 +81,14 @@ router.post('/', function (req, res, next) {
     // save data   
     newData.save(function (err, newDataSaved) {
         if (err) {
-            next(err);
-            return;
+            return res.status(422).json({
+                success: false,
+                status: 422,
+                name: 'Unprocessable Entity',
+                message: err
+            });
+            //next(err);
+            //return;
         }
         newDataSaved.password = '';
         res.json({

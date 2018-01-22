@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "DEBUG=nodeapi:* nodemon ./bin/www",
-    "installDB": "DEBUG=nodeapi:* nodemon ./lib/install_db.js",
+    "start": "node ./bin/www",
+    "start-dev": "nodemon ./bin/www",
+    "start-debug": "DEBUG=nodeapi:* nodemon ./bin/www",
+    "installDB": "nodemon ./lib/install_db.js",
     "docs": "apidoc -i routes/apiv1/ -o docs/apidoc/",
     "postinstall": "npm run docs"
   },

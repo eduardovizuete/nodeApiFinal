@@ -279,6 +279,7 @@ router.post('/', function (req, res, next) {
             next(err);
             return;
         }
+        newDataSaved.password = '';
         res.json({
             success: true,
             newData: newDataSaved
