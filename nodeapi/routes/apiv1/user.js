@@ -41,7 +41,7 @@ router.get('/', function (req, res, next) {
  *
  * @apiParam {String} [firstName] User first name.
  * @apiParam {String} [lastName] User last name .
- * @apiParam {String} [userName] User name.
+ * @apiParam {String} [username] User name.
  * @apiParam {String} [password] User password.
  * @apiParam {String} [email] User email.
  * @apiParam {String} [latitude] User latitude.
@@ -90,7 +90,7 @@ router.get('/', function (req, res, next) {
     
     var firstName = req.query.firstName;
     var lastName = req.query.lastName;
-    var username = req.query.userName;
+    var username = req.query.username;
     var password = req.query.password;
     var email = req.query.email;
     var latitude = req.query.latitude;
@@ -217,7 +217,7 @@ router.get('/:id', function (req, res, next) {
  *
  * @apiParam {String} firstName User first name.
  * @apiParam {String} lastName User last name .
- * @apiParam {String} userName User name.
+ * @apiParam {String} username User name.
  * @apiParam {String} password User password.
  * @apiParam {String} email User email.
  * @apiParam {String} [latitude] User latitude.
@@ -260,7 +260,7 @@ router.post('/', function (req, res, next) {
     var newData = new dataSchema({
         first_name: req.body.firstName,
         last_name: req.body.lastName,
-        username: req.body.userName,
+        username: req.body.username,
         password: req.body.password,
         email: req.body.email,
         latitude: req.body.latitude,
@@ -365,7 +365,7 @@ router.delete('/:user', function (req, res, next) {
  * 
  * @apiParam {String} firstName User first name.
  * @apiParam {String} lastName User last name .
- * @apiParam {String} userName User name.
+ * @apiParam {String} username User name.
  * @apiParam {String} password User password.
  * @apiParam {String} email User email.
  * @apiParam {String} [latitude] User latitude.
@@ -419,7 +419,7 @@ router.put('/:idUpdate', function (req, res, next) {
     var newData = new dataSchema({
         first_name: req.body.firstName,
         last_name: req.body.lastName,
-        username: req.body.userName,
+        username: req.body.username,
         password: req.body.password,
         email: req.body.email,
         latitude: req.body.latitude,
