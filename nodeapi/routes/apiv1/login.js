@@ -32,16 +32,21 @@ const { sanitizeBody } = require("express-validator/filter");
  *
  * @apiSuccess {String} success     true.
  * @apiSuccess {String} token       Token generate.
- * @apiSuccess {String} id          Id user.
+ * @apiSuccess {String} user        Data of user.
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
  *       "success"  : "true",
  *       "token"    : "eyJhbGc...",
- *       "id"       : "1234..."
+ *       "user:" {
+ *          id:         "",
+ *          first_name: "",
+ *          last_name:  "",
+ *          username:   "",
+ *          email:      ""
+ *        }
  *     }
- *
  * @apiError {String}   success     false.
  * @apiError {String}   status      http status code.
  * @apiError {String}   name        name or description http status code.
@@ -107,7 +112,13 @@ router.post(
               res.json({
                 success: true,
                 token: token,
-                id: dataFind._id
+                user: {
+                  id:         dataFind.id,
+                  first_name: dataFind.first_name,
+                  last_name:  dataFind.last_name,
+                  username:   dataFind.username,
+                  email:      dataFind.email
+                }
               });
               console.log("Successfully generate token");
             } else {
